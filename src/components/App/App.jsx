@@ -15,6 +15,10 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import AboutPage from '../AboutPage/AboutPage';
 import CharacterListPage from '../CharacterListPage/CharacterListPage';
+import CharacterSheetStats from '../CharacterListPage/CharacterSheet/CharacterSheetStats.jsx';
+import CharacterSheetFeats from '../CharacterListPage/CharacterSheet/CharacterSheetFeats.jsx';
+import CharacterSheetSpells from '../CharacterListPage/CharacterSheet/CharacterSheetSpells.jsx';
+import CharacterSheetDescription from '../CharacterListPage/CharacterSheet/CharacterSheetDescription.jsx';
 import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
@@ -39,20 +43,32 @@ function App() {
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
           <Redirect exact from="/" to="/home" />
 
-          {/* Visiting localhost:3000/about will show the about page. */}
-          <Route
-            // shows AboutPage at all times (logged in or not)
-            exact path="/about">
+          {/* Visiting localhost:3000/about will show the about page. shows AboutPage at all times (logged in or not)*/}
+          <Route exact path="/about">
             <AboutPage />
           </Route>
-          
-          <ProtectedRoute
-            // logged in shows UserPage else shows LoginPage
-            exact path="/user"
-          >
+          {/* ----------- logged in shows UserPage else shows LoginPage ----------- */}
+          <ProtectedRoute exact path="/user">
             <CharacterListPage />
           </ProtectedRoute>
 
+          <ProtectedRoute exact path="/character-sheet-stats">
+            <CharacterSheetStats />
+          </ProtectedRoute>
+
+          <ProtectedRoute exact path="/character-sheet-feats">
+            <CharacterSheetFeats />
+          </ProtectedRoute>
+
+          <ProtectedRoute exact path="/character-sheet-spells">
+            <CharacterSheetSpells />
+          </ProtectedRoute>
+
+          <ProtectedRoute exact path="/character-sheet-description" >
+            <CharacterSheetDescription />
+          </ProtectedRoute>
+
+          {/* ----------- end of project components ----------- */}
           <ProtectedRoute
             // logged in shows InfoPage else shows LoginPage
             exact path="/info"
