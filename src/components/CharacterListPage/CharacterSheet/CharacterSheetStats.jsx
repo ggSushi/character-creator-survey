@@ -1,8 +1,19 @@
-
+import {useDispatch, useSelector} from 'react-redux';
+import {useEffect} from 'react';
 
 function CharacterSheetStats() {
+  const dispatch = useDispatch();
+  const characterList = useSelector(store => store.characterList)
 
-  // TODO: Make GET request for User's characters
+  //* Make GET request for User's characters
+  const getCharacterList = () => {
+    dispatch({type: 'FETCH_CHARACTERS'})
+    console.log(`GET Character info: ${characterList.data}`);
+  }
+
+  useEffect(() => {
+    getCharacterList();
+  }, [])
 
   return(
     <>

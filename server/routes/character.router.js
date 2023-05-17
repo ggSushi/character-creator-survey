@@ -2,6 +2,7 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
+// TODO GET Requests
 //* Character base GET Request
 router.get('/', (req, res) => {
   // GET route code here
@@ -56,7 +57,6 @@ WHERE "classes"."id" = $1 ORDER BY "level";`;
       res.sendStatus(500);
     })
 }); // end GET spellcasting
-
 
 //* Class-info GET Request
 router.get('/class-info', (req, res) => {
@@ -130,12 +130,20 @@ router.get('/race-feats', (req,res) => {
   })
 }); // end race-feats GET Request
 
-
+// TODO POST Requests
 /**
  * POST route template
  */
 router.post('/', (req, res) => {
   // POST route code here
 });
+
+
+// TODO PUT Requests
+
+
+
+// TODO DELETE Requests
+
 
 module.exports = router;
