@@ -2,6 +2,7 @@
 
 function CharacterSheetStats() {
 
+  // TODO: Make GET request for User's characters
 
   return(
     <>

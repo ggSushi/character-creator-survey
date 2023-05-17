@@ -19,6 +19,12 @@ import CharacterSheetStats from '../CharacterListPage/CharacterSheet/CharacterSh
 import CharacterSheetFeats from '../CharacterListPage/CharacterSheet/CharacterSheetFeats.jsx';
 import CharacterSheetSpells from '../CharacterListPage/CharacterSheet/CharacterSheetSpells.jsx';
 import CharacterSheetDescription from '../CharacterListPage/CharacterSheet/CharacterSheetDescription.jsx';
+import SurveyName from '../CharacterListPage/Survey/SurveyName.jsx';
+import SurveyRace from '../CharacterListPage/Survey/SurveyRace.jsx';
+import SurveyClass from '../CharacterListPage/Survey/SurveyClass.jsx';
+import SurveySkills from '../CharacterListPage/Survey/SurveySkills.jsx';
+import SurveyReview from '../CharacterListPage/Survey/ReviewPage';
+
 import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
@@ -66,6 +72,26 @@ function App() {
 
           <ProtectedRoute exact path="/character-sheet-description" >
             <CharacterSheetDescription />
+          </ProtectedRoute>
+
+          <ProtectedRoute exact path="/survey-page-1">
+            <SurveyName />
+          </ProtectedRoute>
+
+          <ProtectedRoute exact path="/survey-page-2">
+            <SurveyRace />
+          </ProtectedRoute>
+
+          <ProtectedRoute exact path="/survey-page-3">
+            <SurveyClass />
+          </ProtectedRoute>
+
+          <ProtectedRoute exact path="/survey-page-4">
+            <SurveySkills />
+          </ProtectedRoute>
+
+          <ProtectedRoute exact path="/survey-review">
+            <SurveyReview />
           </ProtectedRoute>
 
           {/* ----------- end of project components ----------- */}
