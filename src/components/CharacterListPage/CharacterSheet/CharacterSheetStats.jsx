@@ -8,7 +8,6 @@ function CharacterSheetStats() {
   //* Make GET request for User's characters
   const getCharacterList = () => {
     dispatch({type: 'FETCH_CHARACTERS'})
-    console.log(`GET Character info: ${characterList.data}`);
   }
 
   useEffect(() => {
@@ -18,7 +17,9 @@ function CharacterSheetStats() {
   return(
     <>
     This is the character sheet: stats Page
+
     {JSON.stringify(characterList)}
+    
     </>
   )
 }

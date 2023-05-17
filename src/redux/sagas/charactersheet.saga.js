@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
 
-
+//TODO Sagas go here
 function* fetchCharacters() {
   try {
     const allCharacters = yield axios.get('/api/characters');
@@ -12,6 +12,7 @@ function* fetchCharacters() {
   }
 }
 
+//* This will be exported
 function* charactersSaga() {
   yield takeLatest('FETCH_CHARACTERS', fetchCharacters);
 }
