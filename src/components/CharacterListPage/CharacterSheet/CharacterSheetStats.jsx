@@ -18,6 +18,7 @@ function CharacterSheetStats() {
   return(
     <>
     This is the character sheet: stats Page
+    {JSON.stringify(characterList)}
     </>
   )
 }
