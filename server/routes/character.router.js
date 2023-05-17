@@ -47,6 +47,7 @@ OR "spell_list"."id" = "classes"."spellLv1_id_3"
 OR "spell_list"."id" = "classes"."spellLv1_id_4"
 OR "spell_list"."id" = "classes"."spellLv1_id_5"
 WHERE "classes"."id" = $1 ORDER BY "level";`;
+// TODO: change the 1 in the input
   pool.query(queryText, [1])
     .then((result) => {
       res.send(result.rows);
@@ -74,6 +75,7 @@ router.get('/class-info', (req, res) => {
   OR "class_feats"."id" = "classes"."feat_id_3"
   JOIN "character" ON "character"."class_id" = "classes"."id"
   WHERE "character"."id" = $1;`;
+  // TODO: change the 1 in the input
   pool.query(queryText, [1])
   .then((result) => {
     res.send(result.rows);
@@ -83,9 +85,50 @@ router.get('/class-info', (req, res) => {
   })
 }); // end Class-info GET Request
 
+//* Race Languages GET Request
+router.get('/languages', (req,res) => {
+  const queryText =`
+    Select "languages"."name" AS "language", "races"."id" AS "race_id"
+    FROM "races"
+    JOIN "languages"
+    ON "languages"."id" = "races"."language_id_1"
+    OR "languages"."id" = "races"."language_id_2"
+    WHERE "races"."id" = $1;`;
+    // TODO: change the 1 in the input
+  pool.query(queryText, [1])
+  .then((result) => {
+    res.send(result.rows);
+  }).catch((error) => {
+    console.log(`Error in GET languages: ${error}`);
+    res.sendStatus(500);
+  })
+}); // end Languages GET Request
 
-
-
+//* Racial Feats GET Request
+router.get('/race-feats', (req,res) => {
+  const queryText =`
+    Select "race_feats"."id" AS "race_feats_id",
+    "race_feats"."name" AS "race_feat_name",
+    "race_feats"."description" AS "race_feat_description",
+    "races".*
+    FROM "races"
+    JOIN "race_feats" 
+    ON "races"."feats_id_1" = "race_feats"."id"
+    OR "races"."feats_id_2" = "race_feats"."id"
+    OR "races"."feats_id_3" = "race_feats"."id"
+    OR "races"."feats_id_4" = "race_feats"."id"
+    OR "races"."feats_id_5" = "race_feats"."id"
+    OR "races"."feats_id_6" = "race_feats"."id"
+    WHERE "races"."id" = $1;`;
+    // TODO: change the 1 in the input
+  pool.query(queryText, [1])
+  .then((result) => {
+    res.send(result.rows);
+  }).catch((error) => {
+    console.log(`Error in GET race-feats: ${error}`);
+    res.sendStatus(500);
+  })
+}); // end race-feats GET Request
 
 
 /**
