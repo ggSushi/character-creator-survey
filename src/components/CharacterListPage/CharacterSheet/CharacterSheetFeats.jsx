@@ -12,13 +12,11 @@ function CharacterSheetFeats() {
     dispatch({type: 'FETCH_RACE_INFO'});
   }
 
+  //* Make request for character's class info,
+  //* but only take the class feats
   const getClassInfo = () => {
     dispatch({ type: 'FETCH_CLASS_INFO'});
   }
-
-  //* Make request for character's class feats
-
-
 
   useEffect(() => {
     getRaceInfo();
@@ -30,7 +28,7 @@ function CharacterSheetFeats() {
     These be the Feats, bro
     {JSON.stringify(raceInfo)}
     {JSON.stringify(classInfo)}
-
+    
     </>
   )
 }
