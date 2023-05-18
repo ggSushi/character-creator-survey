@@ -2,6 +2,7 @@ import React from 'react';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import {useSelector, useDispatch} from 'react-redux';
 import {useEffect} from 'react';
+import CharacterItem from './CharacterItem.jsx';
 
 function CharacterListPage() {
   // this component doesn't do much to start, just renders some user reducer info to the DOM
@@ -20,14 +21,20 @@ function CharacterListPage() {
   
   return (
     <div className="container">
-      <h2>Welcome, {user.username}!</h2>
-      <p>Your ID is: {user.id}</p>
-
+      {/* <h2>Welcome, {user.username}!</h2>
+      <p>Your ID is: {user.id}</p> */}
       <h3>My Characters</h3>
-      
-      {JSON.stringify(characterList)}
-      
       <button >New Character</button>
+      <div className="characterListDiv">
+      {
+        characterList.map(character => (
+          <CharacterItem 
+            key={character.id}
+            character={character}
+          />
+        ))
+      }
+      </div>
       <LogOutButton className="btn" />
     </div>
   );

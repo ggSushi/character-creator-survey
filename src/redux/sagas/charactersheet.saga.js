@@ -52,6 +52,7 @@ function* fetchClassInfo() {
   }
 }
 
+
 //* This will be exported
 function* charactersSaga() {
   yield takeEvery('FETCH_CHARACTERS', fetchCharacters);

@@ -7,6 +7,7 @@ function CharacterSheetStats() {
   const classInfo = useSelector(store => store.charReducers.classInfo);
   const raceInfo = useSelector(store => store.charReducers.raceInfo);
   const languages = useSelector(store => store.charReducers.languages);
+  const charId = useSelector(store => store.charReducers.characterId);
 
   //* Make GET request for User's characters
   const getCharacterList = () => {

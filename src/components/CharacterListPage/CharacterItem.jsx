@@ -1,15 +1,27 @@
 import {useDispatch, useSelector} from 'react-redux';
 import {useEffect} from 'react';
+import {useHistory} from 'react-router-dom';
 
-function CharacterItem() {
-  const characterList = useSelector(store => store.charReducers.characterList);
+function CharacterItem({character}) {
+  const history = useHistory();
+  const dispatch = useDispatch();
+
+  const routeCharSheet = () => {
+    history.push('/character-sheet-stats')
+    dispatch({type: 'FETCH_CHARACTER_ID'})
+  }
 
   return(
-    <>
-
-    {JSON.stringify(characterList)}
-    
-    </>
+    <div>
+      <div onClick={() => routeCharSheet()}>
+        <b><u>{character.name}</u></b> {character.id}
+        <br/>
+        <sup>{character.race_name} {character.class_name}</sup>
+        <br />
+        <i><sup>{character.campaign}</sup></i>
+        <button >Delete</button>
+      </div>
+    </div>
   )
 }
 
