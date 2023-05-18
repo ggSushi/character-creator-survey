@@ -52,6 +52,16 @@ function* fetchClassInfo() {
   }
 }
 
+// !!! ERROR HERE !!!
+function* fetchCharInfo(id) {
+  try {
+    const charInfo = yield axios.get(`/character-info/${id}`);
+    yield put({ type: 'SET_CHAR_INFO', payload: charInfo.data});
+  } catch (error) {
+    console.log(`Error in fetchCharInfo: ${error}`);
+    alert(`Whoopsie daisy!`)
+  }
+}
 
 //* This will be exported
 function* charactersSaga() {
@@ -60,6 +70,7 @@ function* charactersSaga() {
   yield takeEvery('FETCH_RACE_INFO', fetchRaceInfo);
   yield takeLatest('FETCH_LANGUAGES', fetchLanguages);
   yield takeLatest('FETCH_CLASS_INFO', fetchClassInfo);
+  yield takeLatest('FETCH_CHAR_INFO', fetchCharInfo);
 
 }
 

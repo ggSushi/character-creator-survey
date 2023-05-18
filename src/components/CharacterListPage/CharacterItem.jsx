@@ -8,7 +8,7 @@ function CharacterItem({character}) {
 
   const routeCharSheet = () => {
     history.push('/character-sheet-stats')
-    dispatch({type: 'FETCH_CHARACTER_ID'})
+    dispatch({type: 'SET_CHARACTER_ID', payload: character.id})
   }
 
   return(

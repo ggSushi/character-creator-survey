@@ -3,7 +3,7 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 // TODO GET Requests
-//* Character base GET Request
+//* CharacterList base GET Request
 router.get('/', (req, res) => {
 
   if (req.isAuthenticated()) {
@@ -29,13 +29,32 @@ router.get('/', (req, res) => {
   } else {
     res.sendStatus(403);
   }
-}); // end GET character
+}); // end GET characterList
+
+router.get('/character-info/:id', (req, res) => {
+  const queryText = `
+    Select "character".*, 
+    "races"."name" as "race_name", 
+    "classes"."name" as "class_name"
+    from "character"
+    JOIN "user" ON "user"."id" = "character"."user_id"
+    JOIN "races" ON "races"."id" = "character"."race_id"
+    JOIN "classes" ON "classes"."id" = "character"."class_id"
+    WHERE "character"."id" = $1;`;
+  // TODO: change the 1 in the input into USER ID
+  pool.query(queryText, [req.params.id])
+    .then((result) => {
+      res.send(result.rows);
+    }).catch(error => {
+      console.log(`ERROR in GET character: ${error}`);
+      res.sendStatus(500);
+    })
+})
 
 //* Spellcasting GET Request
 router.get('/spellcasting', (req, res) => {
-  if (req.isAuthenticated()) {
-    // GET route code here
-    const queryText = `
+  // GET route code here
+  const queryText = `
     SELECT "spell_list".*, 
     "classes"."spell_save_dc", 
     "classes"."spell_save_name",
@@ -56,17 +75,14 @@ router.get('/spellcasting', (req, res) => {
     OR "spell_list"."id" = "classes"."spellLv1_id_5"
     JOIN "character" ON "character"."class_id" = "classes"."id"
     WHERE "character"."id" = $1 ORDER BY "level";`;
-    // TODO: change the 1 in the input into CHARACTER ID
-    pool.query(queryText, [1])
-      .then((result) => {
-        res.send(result.rows);
-      }).catch(error => {
-        console.log(`ERROR in GET spellcasting: ${error}`);
-        res.sendStatus(500);
-      })
-  } else {
-    res.sendStatus(403);
-  }
+  // TODO: change the 1 in the input into CHARACTER ID
+  pool.query(queryText, [1])
+    .then((result) => {
+      res.send(result.rows);
+    }).catch(error => {
+      console.log(`ERROR in GET spellcasting: ${error}`);
+      res.sendStatus(500);
+    })
 }); // end GET spellcasting
 
 //* Class-info GET Request

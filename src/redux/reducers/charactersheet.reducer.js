@@ -46,14 +46,24 @@ const classInfo = (state = [], action) => {
 }
 
 //* saving Character id
-// const characterId = (state = '', action) => {
-//   switch (action.type) {
-//     case 'SET_CHARACTER_ID':
-//       return action.payload;
-//     default:
-//       return state;
-//   }
-// }
+const characterId = (state = '', action) => {
+  switch (action.type) {
+    case 'SET_CHARACTER_ID':
+      return action.payload;
+    default:
+      return state;
+  }
+}
+
+//* Saving specific Char info
+const characterInfo = (state = [], action) => {
+  switch (action.type) {
+    case 'SET_CHAR_INFO':
+      return action.payload;
+    default:
+      return state;
+  }
+}
 
 //* This is the combineReducer that gets exported
 const charReducers = combineReducers({
@@ -62,7 +72,8 @@ const charReducers = combineReducers({
   raceInfo,
   languages,
   classInfo,
-  // characterId,
+  characterId,
+  characterInfo,
 
 });
 

@@ -3,15 +3,16 @@ import { useEffect } from 'react';
 
 function CharacterSheetStats() {
   const dispatch = useDispatch();
-  const characterList = useSelector(store => store.charReducers.characterList);
+  const characterInfo = useSelector(store => store.charReducers.characterInfo);
   const classInfo = useSelector(store => store.charReducers.classInfo);
   const raceInfo = useSelector(store => store.charReducers.raceInfo);
   const languages = useSelector(store => store.charReducers.languages);
   const charId = useSelector(store => store.charReducers.characterId);
 
   //* Make GET request for User's characters
-  const getCharacterList = () => {
-    dispatch({ type: 'FETCH_CHARACTERS' })
+
+  const getCharInfo = () => {
+    dispatch({ type: 'FETCH_CHAR_INFO'})
   }
 
   //* GET languages known
@@ -30,17 +31,18 @@ function CharacterSheetStats() {
   }
 
   useEffect(() => {
-    getCharacterList();
+    getCharInfo();
     getLanguages();
     getRaceInfo();
     getClassInfo();
+    // console.log(charId);
   }, [])
 
   return (
     <>
       This is the character sheet: stats Page
 
-      {JSON.stringify(characterList)}
+      {JSON.stringify(characterInfo)}
       {JSON.stringify(languages)}
       {JSON.stringify(classInfo)}
       {JSON.stringify(raceInfo)}
