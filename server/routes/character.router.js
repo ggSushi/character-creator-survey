@@ -62,20 +62,23 @@ router.get('/spellcasting', (req, res) => {
 //* Class-info GET Request
 router.get('/class-info', (req, res) => {
   const queryText = `
-  Select "classes"."name" as "class_name", "class_feats".*,
-  "classes"."hit_dice", "classes"."hit_point_base",
-  "classes"."skill_prof_1", "classes"."skill_prof_2",
-  "classes"."skill_prof_3", "classes"."skill_prof_4",
-  "classes"."save_prof_1", "classes"."save_prof_2",
-  "classes"."armor_prof", "classes"."tool_prof",
-  "classes"."tool_prof", "classes"."weapon_prof", "classes"."equipment"
-  FROM "classes"
-  JOIN "class_feats" 
-  ON "class_feats"."id" = "classes"."feat_id_1"
-  OR "class_feats"."id" = "classes"."feat_id_2"
-  OR "class_feats"."id" = "classes"."feat_id_3"
-  JOIN "character" ON "character"."class_id" = "classes"."id"
-  WHERE "character"."id" = $1;`;
+    Select "classes"."name" as "class_name", 
+    "class_feats"."id" as "class_feat_id",
+    "class_feats"."name" as "class_feat_name",
+    "class_feats"."description" as "class_feat_desc",
+    "classes"."hit_dice", "classes"."hit_point_base",
+    "classes"."skill_prof_1", "classes"."skill_prof_2",
+    "classes"."skill_prof_3", "classes"."skill_prof_4",
+    "classes"."save_prof_1", "classes"."save_prof_2",
+    "classes"."armor_prof", "classes"."tool_prof",
+    "classes"."tool_prof", "classes"."weapon_prof", "classes"."equipment"
+    FROM "classes"
+    JOIN "class_feats" 
+    ON "class_feats"."id" = "classes"."feat_id_1"
+    OR "class_feats"."id" = "classes"."feat_id_2"
+    OR "class_feats"."id" = "classes"."feat_id_3"
+    JOIN "character" ON "character"."class_id" = "classes"."id"
+    WHERE "character"."id" = $1; `;
   // TODO: change the 1 in the input
   pool.query(queryText, [1])
     .then((result) => {

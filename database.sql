@@ -1,6 +1,5 @@
 -- Database name: character-creator-app
 
-
 -- USER is a reserved keyword with Postgres
 -- You must use double quotes in every query that user is in:
 -- ex. SELECT * FROM "user";
@@ -42,10 +41,23 @@ OR "spell_list"."id" = "classes"."spellLv1_id_2"
 OR "spell_list"."id" = "classes"."spellLv1_id_3"
 OR "spell_list"."id" = "classes"."spellLv1_id_4"
 OR "spell_list"."id" = "classes"."spellLv1_id_5"
-WHERE "classes"."id" = 1 ORDER BY "level";
+JOIN "character" ON "character"."class_id" = "classes"."id"
+WHERE "character"."id" = 1 ORDER BY "level";
 
+--
+Select "class_feats".* from "class_feats"
+JOIN "classes"
+ON "class_feats"."id" = "classes"."feat_id_1"
+OR "class_feats"."id" = "classes"."feat_id_2"
+OR "class_feats"."id" = "classes"."feat_id_3"
+JOIN "character" ON "character"."class_id" = "classes"."id"
+WHERE "character"."id" = 1;
+--
 
-Select "classes"."name" as "class_name", "class_feats".*,
+Select "classes"."name" as "class_name", 
+"class_feats"."id" as "class_feat_id",
+"class_feats"."name" as "class_feat_name",
+"class_feats"."description" as "class_feat_desc",
 "classes"."hit_dice", "classes"."hit_point_base",
 "classes"."skill_prof_1", "classes"."skill_prof_2",
 "classes"."skill_prof_3", "classes"."skill_prof_4",
@@ -72,7 +84,8 @@ OR "races"."feats_id_3" = "race_feats"."id"
 OR "races"."feats_id_4" = "race_feats"."id"
 OR "races"."feats_id_5" = "race_feats"."id"
 OR "races"."feats_id_6" = "race_feats"."id"
-WHERE "races"."id" = 1;
+JOIN "character" ON "character"."race_id" = "races"."id"
+WHERE "character"."id" = 1;
 
 
 Select "languages"."name" AS "language", "races"."id" AS "race_id"
@@ -80,7 +93,8 @@ FROM "races"
 JOIN "languages"
 ON "languages"."id" = "races"."language_id_1"
 OR "languages"."id" = "races"."language_id_2"
-WHERE "races"."id" = 1;
+JOIN "character" ON "character"."race_id" = "races"."id"
+WHERE "character"."id" = 1;
 
 
 -- Character Sheet info -----------------------------------

@@ -4,11 +4,16 @@ import {useEffect} from 'react'
 function CharacterSheetFeats() {
   const dispatch = useDispatch();
   const raceInfo = useSelector(store => store.charReducers.raceInfo);
+  const classInfo = useSelector(store => store.charReducers.classInfo);
 
   //* Make request for character's race info, 
   //* but only take race feats
-  const getRaceFeats = () => {
-    dispatch({type: 'FETCH_RACE_INFO'})
+  const getRaceInfo = () => {
+    dispatch({type: 'FETCH_RACE_INFO'});
+  }
+
+  const getClassInfo = () => {
+    dispatch({ type: 'FETCH_CLASS_INFO'});
   }
 
   //* Make request for character's class feats
@@ -16,13 +21,15 @@ function CharacterSheetFeats() {
 
 
   useEffect(() => {
-    getRaceFeats();
+    getRaceInfo();
+    getClassInfo();
   }, [])
 
   return(
     <>
     These be the Feats, bro
     {JSON.stringify(raceInfo)}
+    {JSON.stringify(classInfo)}
 
     </>
   )
