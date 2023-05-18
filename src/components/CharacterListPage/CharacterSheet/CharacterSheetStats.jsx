@@ -3,7 +3,7 @@ import {useEffect} from 'react';
 
 function CharacterSheetStats() {
   const dispatch = useDispatch();
-  const characterList = useSelector(store => store.characterList)
+  const characterList = useSelector(store => store.charReducers.characterList)
 
   //* Make GET request for User's characters
   const getCharacterList = () => {
@@ -19,7 +19,7 @@ function CharacterSheetStats() {
     This is the character sheet: stats Page
 
     {JSON.stringify(characterList)}
-    
+
     </>
   )
 }

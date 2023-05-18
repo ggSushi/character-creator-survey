@@ -5,7 +5,7 @@ import {useSelector} from 'react-redux';
 function CharacterListPage() {
   // this component doesn't do much to start, just renders some user reducer info to the DOM
   const user = useSelector((store) => store.user);
-  const characterList = useSelector(store => store.characterList);
+  const characterList = useSelector(store => store.charReducers.characterList);
 
   
   return (

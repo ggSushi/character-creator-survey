@@ -2,7 +2,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {useEffect} from 'react';
 
 function CharacterItem() {
-  const characterList = useSelector(store => store.characterList)
+  const characterList = useSelector(store => store.charReducers.characterList);
 
   return(
     <>
