@@ -1,8 +1,8 @@
 import {useDispatch, useSelector} from 'react-redux';
-import {useEffect} from 'react';
 import {useHistory} from 'react-router-dom';
+import axios from 'axios';
 
-function CharacterItem({character}) {
+function CharacterItem({character, deleteChar, getCharacterList}) {
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -10,6 +10,7 @@ function CharacterItem({character}) {
     history.push('/character-sheet-stats')
     dispatch({type: 'SET_CHARACTER_ID', payload: character.id})
   }
+
 
   return(
     <div>
@@ -19,8 +20,8 @@ function CharacterItem({character}) {
         <sup>{character.race_name} {character.class_name}</sup>
         <br />
         <i><sup>{character.campaign}</sup></i>
-        <button >Delete</button>
       </div>
+      <button onClick={() => deleteChar(character.id)}>Delete</button>
     </div>
   )
 }

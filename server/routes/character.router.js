@@ -31,6 +31,7 @@ router.get('/', (req, res) => {
   }
 }); // end GET characterList
 
+//* Specific character info
 router.get('/character-info/:id', (req, res) => {
   const queryText = `
     Select "character".*, 
@@ -74,7 +75,6 @@ router.get('/spellcasting/:id', (req, res) => {
     OR "spell_list"."id" = "classes"."spellLv1_id_5"
     JOIN "character" ON "character"."class_id" = "classes"."id"
     WHERE "character"."id" = $1 ORDER BY "level";`;
-  // TODO: change the 1 in the input into CHARACTER ID
   pool.query(queryText, [req.params.id])
     .then((result) => {
       res.send(result.rows);
@@ -124,7 +124,6 @@ router.get('/languages/:id', (req, res) => {
     OR "languages"."id" = "races"."language_id_2"
     JOIN "character" ON "character"."race_id" = "races"."id"
     WHERE "character"."id" = $1;`;
-  // TODO: change the 1 in the input
   pool.query(queryText, [req.params.id])
     .then((result) => {
       res.send(result.rows);
@@ -151,7 +150,6 @@ router.get('/race-feats/:id', (req, res) => {
     OR "races"."feats_id_6" = "race_feats"."id"
     JOIN "character" ON "character"."race_id" = "races"."id"
     WHERE "character"."id" = $1;`;
-  // TODO: change the 1 in the input
   pool.query(queryText, [req.params.id])
     .then((result) => {
       res.send(result.rows);
@@ -175,6 +173,16 @@ router.post('/', (req, res) => {
 
 
 // TODO DELETE Requests
+router.delete('/:id', (req, res) => {
+  let queryText = `
+    DELETE FROM "character" where "id" = $1;`;
+  pool.query(queryText, [req.params.id]).then((result) => {
+    res.sendStatus(200)
+  }).catch((error) => {
+    console.log(`Error in Delete: ${error}`);
+    res.sendStatus(500);
+  })
+})
 
 
 module.exports = router;
