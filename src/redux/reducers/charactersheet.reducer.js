@@ -45,6 +45,7 @@ const classInfo = (state = [], action) => {
   }
 }
 
+
 //* saving Character id
 const characterId = (state = '', action) => {
   switch (action.type) {

@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 
+
 function CharacterSheetStats() {
   const dispatch = useDispatch();
   const characterInfo = useSelector(store => store.charReducers.characterInfo);
@@ -10,9 +11,9 @@ function CharacterSheetStats() {
   const charId = useSelector(store => store.charReducers.characterId);
 
   //* Make GET request for User's characters
-
   const getCharInfo = () => {
-    dispatch({ type: 'FETCH_CHAR_INFO'})
+    console.log(`charId stats page`,charId)
+    dispatch({ type: 'FETCH_CHAR_INFO', payload: charId})
   }
 
   //* GET languages known
