@@ -18,17 +18,17 @@ function CharacterSheetStats() {
 
   //* GET languages known
   const getLanguages = () => {
-    dispatch({ type: 'FETCH_LANGUAGES'})
+    dispatch({ type: 'FETCH_LANGUAGES', payload: charId})
   }
 
   //* GET class info
   const getRaceInfo = () => {
-    dispatch({ type: 'FETCH_CLASS_INFO'})
+    dispatch({ type: 'FETCH_CLASS_INFO', payload: charId})
   }
 
   //* GET race info
   const getClassInfo = () => {
-    dispatch({ type: 'FETCH_RACE_INFO'})
+    dispatch({ type: 'FETCH_RACE_INFO', payload: charId})
   }
 
   useEffect(() => {

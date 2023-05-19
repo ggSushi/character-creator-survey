@@ -12,9 +12,10 @@ function* fetchCharacters() {
   }
 };
 
-function* fetchSpellcasting() {
+function* fetchSpellcasting(action) {
   try {
-    const spellcasting = yield axios.get('/api/characters/spellcasting');
+    let id = action.payload;
+    const spellcasting = yield axios.get(`/api/characters/spellcasting/${id}`);
     yield put({ type: 'SET_SPELL_INFO', payload: spellcasting.data});
   } catch (error) {
     console.log(`Error in fetchSpellcasting: ${error}`)
@@ -22,9 +23,10 @@ function* fetchSpellcasting() {
   }
 };
 
-function* fetchRaceInfo() {
+function* fetchRaceInfo(action) {
   try {
-    const raceInfo = yield axios.get('/api/characters/race-feats');
+    let id = action.payload;
+    const raceInfo = yield axios.get(`/api/characters/race-feats/${id}`);
     yield put({ type: 'SET_RACE_INFO', payload: raceInfo.data});
   } catch (error) {
     console.log(`Error in fetchRaceFeats: ${error}`);
@@ -32,9 +34,10 @@ function* fetchRaceInfo() {
   }
 }
 
-function* fetchLanguages() {
+function* fetchLanguages(action) {
   try {
-    const languages = yield axios.get('/api/characters/languages');
+    let id = action.payload;
+    const languages = yield axios.get(`/api/characters/languages/${id}`);
     yield put({ type: 'SET_LANGUAGES', payload: languages.data});
   } catch (error) {
     console.log(`Error in fetch Languages: ${error}`);
@@ -42,9 +45,10 @@ function* fetchLanguages() {
   }
 }
 
-function* fetchClassInfo() {
+function* fetchClassInfo(action) {
   try {
-    const classInfo = yield axios.get('/api/characters/class-info');
+    let id = action.payload;
+    const classInfo = yield axios.get(`/api/characters/class-info/${id}`);
     yield put({ type: 'SET_CLASS_INFO', payload: classInfo.data});
   } catch (error) {
     console.log(`Error in fetchClassInfo: ${error}`);

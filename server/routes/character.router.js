@@ -41,7 +41,6 @@ router.get('/character-info/:id', (req, res) => {
     JOIN "races" ON "races"."id" = "character"."race_id"
     JOIN "classes" ON "classes"."id" = "character"."class_id"
     WHERE "character"."id" = $1;`;
-  // TODO: change the 1 in the input into USER ID
   pool.query(queryText, [req.params.id])
     .then((result) => {
       res.send(result.rows);
@@ -52,7 +51,7 @@ router.get('/character-info/:id', (req, res) => {
 })
 
 //* Spellcasting GET Request
-router.get('/spellcasting', (req, res) => {
+router.get('/spellcasting/:id', (req, res) => {
   // GET route code here
   const queryText = `
     SELECT "spell_list".*, 
@@ -76,7 +75,7 @@ router.get('/spellcasting', (req, res) => {
     JOIN "character" ON "character"."class_id" = "classes"."id"
     WHERE "character"."id" = $1 ORDER BY "level";`;
   // TODO: change the 1 in the input into CHARACTER ID
-  pool.query(queryText, [1])
+  pool.query(queryText, [req.params.id])
     .then((result) => {
       res.send(result.rows);
     }).catch(error => {
@@ -86,7 +85,7 @@ router.get('/spellcasting', (req, res) => {
 }); // end GET spellcasting
 
 //* Class-info GET Request
-router.get('/class-info', (req, res) => {
+router.get('/class-info/:id', (req, res) => {
   const queryText = `
     Select "classes"."name" as "class_name", 
     "class_feats"."id" as "class_feat_id",
@@ -106,7 +105,7 @@ router.get('/class-info', (req, res) => {
     JOIN "character" ON "character"."class_id" = "classes"."id"
     WHERE "character"."id" = $1; `;
   // TODO: change the 1 in the input
-  pool.query(queryText, [1])
+  pool.query(queryText, [req.params.id])
     .then((result) => {
       res.send(result.rows);
     }).catch((error) => {
@@ -116,7 +115,7 @@ router.get('/class-info', (req, res) => {
 }); // end Class-info GET Request
 
 //* Race Languages GET Request
-router.get('/languages', (req, res) => {
+router.get('/languages/:id', (req, res) => {
   const queryText = `
     Select "languages"."name" AS "language", "races"."id" AS "race_id"
     FROM "races"
@@ -126,7 +125,7 @@ router.get('/languages', (req, res) => {
     JOIN "character" ON "character"."race_id" = "races"."id"
     WHERE "character"."id" = $1;`;
   // TODO: change the 1 in the input
-  pool.query(queryText, [1])
+  pool.query(queryText, [req.params.id])
     .then((result) => {
       res.send(result.rows);
     }).catch((error) => {
@@ -136,7 +135,7 @@ router.get('/languages', (req, res) => {
 }); // end Languages GET Request
 
 //* Racial Feats GET Request
-router.get('/race-feats', (req, res) => {
+router.get('/race-feats/:id', (req, res) => {
   const queryText = `
     Select "race_feats"."id" AS "race_feats_id",
     "race_feats"."name" AS "race_feat_name",
@@ -153,7 +152,7 @@ router.get('/race-feats', (req, res) => {
     JOIN "character" ON "character"."race_id" = "races"."id"
     WHERE "character"."id" = $1;`;
   // TODO: change the 1 in the input
-  pool.query(queryText, [1])
+  pool.query(queryText, [req.params.id])
     .then((result) => {
       res.send(result.rows);
     }).catch((error) => {
