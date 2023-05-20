@@ -18,6 +18,10 @@ function CharacterListPage() {
     dispatch({type: 'FETCH_CHARACTERS'})
   }
 
+  const handleOnclick = () => {
+    history.push('/survey-page-1');
+  }
+
   const deleteChar = (id) => {
     axios.delete(`/api/characters/${id}`).then((result) => {
       getCharacterList();
@@ -36,7 +40,7 @@ function CharacterListPage() {
       {/* <h2>Welcome, {user.username}!</h2>
       <p>Your ID is: {user.id}</p> */}
       <h3>My Characters</h3>
-      <button >New Character</button>
+      <button onClick={handleOnclick}>New Character</button>
       <div className="characterListDiv">
       {
         characterList.map(character => (

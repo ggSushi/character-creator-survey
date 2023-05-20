@@ -45,7 +45,6 @@ const classInfo = (state = [], action) => {
   }
 }
 
-
 //* saving Character id
 const characterId = (state = '', action) => {
   switch (action.type) {
@@ -66,6 +65,24 @@ const characterInfo = (state = [], action) => {
   }
 }
 
+// ------ User info reducers -------- //
+const characterName = (state = '', action) => {
+  if (action.type === 'SET_CHARACTER_NAME') {
+    return action.payload;
+  } 
+  return state;
+}
+
+const campaignName = (state = '', action) => {
+  switch (action.type) {
+    case 'SET_CAMPAIGN_NAME':
+      return action.payload;
+    default:
+      return state;
+  }
+}
+
+
 //* This is the combineReducer that gets exported
 const charReducers = combineReducers({
   spellInfo,
@@ -75,6 +92,8 @@ const charReducers = combineReducers({
   classInfo,
   characterId,
   characterInfo,
+  characterName,
+  campaignName,
 
 });
 
