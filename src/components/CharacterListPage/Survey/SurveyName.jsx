@@ -1,5 +1,4 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
 function SurveyName() {
@@ -10,7 +9,12 @@ function SurveyName() {
 
 
   const nextPage = () => {
-    history.push('/survey-page-2');
+    if (characterName === '') {
+      alert(`Please enter your character's name`)
+      return;
+    } else {
+      history.push('/survey-page-2');
+    }
   }
 
   const handleCharNameChange = (event) => {
@@ -27,10 +31,10 @@ function SurveyName() {
       <div>
         What is your character's name?
         <br />
-        <input onChange={handleCharNameChange} placeholder="e.g. Leo B. Tronx" />
+        <input onChange={handleCharNameChange} placeholder="e.g. Leo B. Tronx" required/>
       </div>
       <div>
-        What campaign is this character in? (optional).
+        What campaign is this character in? (optional)
         <br />
         <input onChange={handlecampaignNameChange} placeholder="e.g. Icronus Campaign" />
       </div>

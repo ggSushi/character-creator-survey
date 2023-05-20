@@ -78,12 +78,12 @@ function App() {
             <SurveyName />
           </ProtectedRoute>
 
-          <ProtectedRoute exact path="/survey-page-2">
-            <SurveyRace />
+         <ProtectedRoute exact path="/survey-page-2">
+            <SurveyClass />
           </ProtectedRoute>
 
           <ProtectedRoute exact path="/survey-page-3">
-            <SurveyClass />
+            <SurveyRace />
           </ProtectedRoute>
 
           <ProtectedRoute exact path="/survey-page-4">
