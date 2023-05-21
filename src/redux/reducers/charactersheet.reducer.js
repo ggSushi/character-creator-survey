@@ -82,6 +82,15 @@ const campaignName = (state = '', action) => {
   }
 }
 
+const charClass = (state = '', action) => {
+  switch (action.type) {
+    case 'SET_CLASS_TYPE':
+      return action.payload;
+    default:
+      return state;
+  }
+}
+
 
 //* This is the combineReducer that gets exported
 const charReducers = combineReducers({
@@ -94,6 +103,7 @@ const charReducers = combineReducers({
   characterInfo,
   characterName,
   campaignName,
+  charClass,
 
 });
 
