@@ -91,6 +91,15 @@ const charClass = (state = '', action) => {
   }
 }
 
+const charScores = (state = [], action) => {
+  switch (action.type) {
+    case 'SET_ABILITIES':
+      return action.payload;
+    default:
+      return state;
+  }
+}
+
 
 //* This is the combineReducer that gets exported
 const charReducers = combineReducers({
@@ -104,6 +113,7 @@ const charReducers = combineReducers({
   characterName,
   campaignName,
   charClass,
+  charScores,
 
 });
 
