@@ -91,10 +91,19 @@ const charClass = (state = '', action) => {
   }
 }
 
-const charScores = (state = [], action) => {
+const abilityScores = (state = [], action) => {
   switch (action.type) {
     case 'SET_ABILITY_SCORES':
       return action.payload;
+    default:
+      return state;
+  }
+}
+
+const skillBonus = (state = [], action) => {
+  switch (action.type) {
+    case 'SET_SKILL_PROF':
+      return [...state, action.payload];
     default:
       return state;
   }
@@ -113,7 +122,8 @@ const charReducers = combineReducers({
   characterName,
   campaignName,
   charClass,
-  charScores,
+  abilityScores,
+  skillBonus,
 
 });
 

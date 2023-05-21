@@ -1,6 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import {useState, useEffect} from 'react'
 
 
 function SurveyClass() {
@@ -8,24 +7,22 @@ function SurveyClass() {
   const dispatch = useDispatch();
   const charClass = useSelector(store => store.charReducers.charClass);
 
-
- 
-
   const nextPage = (event) => {
     event.preventDefault();
     if (charClass === '') {
       alert('Please select one of the options below.');
       return;
     } else {
-      history.push('/survey-page-3');
+      history.push('/survey-page-2.1');
     }
   }
-
+  // handles Class value select
   const handleClassChange = (event) => {
     dispatch({ type: 'SET_CLASS_TYPE', payload: event.target.value});
     classSelect(event);
   }
 
+  // handles Ability scores on class value select
   const classSelect = (event) => {
     if (event.target.value === 'sorcerer-1') {
       console.log(`sorcerer`)
@@ -37,7 +34,7 @@ function SurveyClass() {
         wis_score: 13,
         cha_score: 15
       }
-      console.log(`Str score: ${abilityScores.str_score}`);
+      dispatch({ type: 'SET_ABILITY_SCORES', payload: abilityScores})
 
     } else if (event.target.value === 'barbarian-2') {
       console.log(`barb`)
@@ -49,7 +46,7 @@ function SurveyClass() {
         wis_score: 12,
         cha_score: 8
       }
-      console.log(`Str score: ${abilityScores.str_score}`);
+      dispatch({ type: 'SET_ABILITY_SCORES', payload: abilityScores})
 
     } else if (event.target.value === 'paladin-3') {
       console.log(`paladin`)
@@ -61,7 +58,8 @@ function SurveyClass() {
         wis_score: 12,
         cha_score: 14
       }
-      console.log(`Str score: ${abilityScores.str_score}`);
+      dispatch({ type: 'SET_ABILITY_SCORES', payload: abilityScores})
+
     } else if (event.target.value === 'ranger-4') {
       console.log(`ranger`)
       const abilityScores = {
@@ -72,7 +70,8 @@ function SurveyClass() {
         wis_score: 14,
         cha_score: 8
       }
-      console.log(`Str score: ${abilityScores.str_score}`);
+      dispatch({ type: 'SET_ABILITY_SCORES', payload: abilityScores})
+
     } else if (event.target.value === 'cleric-5') {
       console.log(`cleric`)
       const abilityScores = {
@@ -83,7 +82,8 @@ function SurveyClass() {
         wis_score: 15,
         cha_score: 10
       }
-      console.log(`Str score: ${abilityScores.str_score}`);
+      dispatch({ type: 'SET_ABILITY_SCORES', payload: abilityScores})
+
     } else if (event.target.value === 'rogue-6') {
       console.log(`rogue`)
       const abilityScores = {
@@ -94,7 +94,8 @@ function SurveyClass() {
         wis_score: 13,
         cha_score: 12
       }
-      console.log(`Str score: ${abilityScores.str_score}`);
+      dispatch({ type: 'SET_ABILITY_SCORES', payload: abilityScores})
+
     } else {
       alert(`No class value selected.`);
       return;

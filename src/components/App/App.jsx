@@ -24,6 +24,7 @@ import SurveyRace from '../CharacterListPage/Survey/SurveyRace.jsx';
 import SurveyClass from '../CharacterListPage/Survey/SurveyClass.jsx';
 import SurveySkills from '../CharacterListPage/Survey/SurveySkills.jsx';
 import SurveyReview from '../CharacterListPage/Survey/ReviewPage';
+import SurveyClassSkills from '../CharacterListPage/Survey/SurveyClassSkills.jsx';
 
 import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
@@ -80,6 +81,10 @@ function App() {
 
          <ProtectedRoute exact path="/survey-page-2">
             <SurveyClass />
+          </ProtectedRoute>
+
+          <ProtectedRoute exact path="/survey-page-2.1">
+            <SurveyClassSkills />
           </ProtectedRoute>
 
           <ProtectedRoute exact path="/survey-page-3">

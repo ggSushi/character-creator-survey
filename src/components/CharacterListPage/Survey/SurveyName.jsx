@@ -5,7 +5,6 @@ function SurveyName() {
   const history = useHistory();
   const dispatch = useDispatch();
   const characterName = useSelector(store => store.charReducers.characterName);
-  const campaignName = useSelector(store => store.charReducers.campaignName);
 
 
   const nextPage = () => {
