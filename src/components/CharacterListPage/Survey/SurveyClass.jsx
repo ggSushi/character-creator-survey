@@ -37,18 +37,67 @@ function SurveyClass() {
         wis_score: 13,
         cha_score: 15
       }
-      console.log(`abilityScores: ${abilityScores.str_score}`);
+      console.log(`Str score: ${abilityScores.str_score}`);
 
     } else if (event.target.value === 'barbarian-2') {
       console.log(`barb`)
+      const abilityScores = {
+        str_score: 15,
+        dex_score: 13,
+        con_score: 14,
+        int_score: 10,
+        wis_score: 12,
+        cha_score: 8
+      }
+      console.log(`Str score: ${abilityScores.str_score}`);
+
     } else if (event.target.value === 'paladin-3') {
       console.log(`paladin`)
+      const abilityScores = {
+        str_score: 13,
+        dex_score: 8,
+        con_score: 15,
+        int_score: 10,
+        wis_score: 12,
+        cha_score: 14
+      }
+      console.log(`Str score: ${abilityScores.str_score}`);
     } else if (event.target.value === 'ranger-4') {
       console.log(`ranger`)
+      const abilityScores = {
+        str_score: 10,
+        dex_score: 15,
+        con_score: 12,
+        int_score: 13,
+        wis_score: 14,
+        cha_score: 8
+      }
+      console.log(`Str score: ${abilityScores.str_score}`);
     } else if (event.target.value === 'cleric-5') {
       console.log(`cleric`)
+      const abilityScores = {
+        str_score: 14,
+        dex_score: 8,
+        con_score: 12,
+        int_score: 13,
+        wis_score: 15,
+        cha_score: 10
+      }
+      console.log(`Str score: ${abilityScores.str_score}`);
     } else if (event.target.value === 'rogue-6') {
       console.log(`rogue`)
+      const abilityScores = {
+        str_score: 8,
+        dex_score: 15,
+        con_score: 10,
+        int_score: 14,
+        wis_score: 13,
+        cha_score: 12
+      }
+      console.log(`Str score: ${abilityScores.str_score}`);
+    } else {
+      alert(`No class value selected.`);
+      return;
     }
   }
 

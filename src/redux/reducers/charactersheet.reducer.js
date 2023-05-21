@@ -93,7 +93,7 @@ const charClass = (state = '', action) => {
 
 const charScores = (state = [], action) => {
   switch (action.type) {
-    case 'SET_ABILITIES':
+    case 'SET_ABILITY_SCORES':
       return action.payload;
     default:
       return state;
