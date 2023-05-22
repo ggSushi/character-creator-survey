@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
 let skillCounter = 0;
 
@@ -10,6 +10,7 @@ function SurveyClassSkills() {
   const charClass = useSelector(store => store.charReducers.charClass);
   const abilityScores = useSelector(store => store.charReducers.abilityScores);
   const skillBonus = useSelector(store => store.charReducers.skillBonus);
+  const [checkboxValues, setValues] = useState([]);
   let [skillAmount, setSkillAmount] = useState(2);
 
   //* all proficiency options for available classes
@@ -50,17 +51,46 @@ function SurveyClassSkills() {
 
   // end skill proficiencies
 
-  const setClassSkills = (event) => {
-    skillCounter += 1;
-    if (skillCounter <= skillAmount) {
-      dispatch({ type: 'SET_SKILL_PROF', payload: event.target.value });
+  const checkHandler = (event) => {
+    const { value, checked } = event.target;
+
+    if (checked) {
+      skillCounter += 1;
+      if (skillCounter > skillAmount) {
+        skillCounter -= 1;
+        alert(`Please choose only ${skillAmount} of skills.`);
+        return;
+      } else {
+        setValues(pre => [...pre, value])
+      }
     } else {
       skillCounter -= 1;
-      alert(`Please choose only ${skillAmount} of skills.`);
-      return;
+      setValues(pre => {
+        return [...pre.filter(skill => skill !== value)]
+      })
     }
+    console.log(skillCounter)
+    console.log(checkboxValues)
+    console.log(event.target.checked)
+  };
+
+  const setClassSkills = (event) => {
+    checkHandler(event);
+
   }
 
+
+  // const setClassSkills = (event) => {
+
+  //   if (skillCounter < skillAmount) {
+  //     checkHandler(event);
+  //     // dispatch({ type: 'SET_SKILL_PROF', payload: event.target.value });
+  //   } else {
+
+  //     alert(`Please choose only ${skillAmount} of skills.`);
+  //   }
+
+  // }
 
   return (
     <>
