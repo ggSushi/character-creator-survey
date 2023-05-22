@@ -2,15 +2,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { useState, useRef } from 'react';
 
-let skillCounter = 0;
-
 function SurveyClassSkills() {
   const history = useHistory();
   const dispatch = useDispatch();
   const charClass = useSelector(store => store.charReducers.charClass);
   const abilityScores = useSelector(store => store.charReducers.abilityScores);
   const skillBonus = useSelector(store => store.charReducers.skillBonus);
-  const [checkboxValues, setValues] = useState([]);
+  const [skillCounter, setSkillCounter] = useState(0);
   let [skillAmount, setSkillAmount] = useState(2);
 
   //* all proficiency options for available classes
@@ -47,42 +45,23 @@ function SurveyClassSkills() {
     }
   ]
 
-
-
   // end skill proficiencies
 
   const checkHandler = (event) => {
-    let { value, checked } = event.target;
-
+    let {value, checked} = event.target;
     if (checked) {
-      skillCounter += 1;
-      if (skillCounter > skillAmount) {
-        skillCounter -= 1;
+      if (skillCounter >= skillAmount) {
         alert(`Please choose only ${skillAmount} of skills.`);
       } else {
-        setValues(state => [...state, {value}])
-        console.log(skillCounter)
-        console.log(checkboxValues)
-        console.log(event.target.checked)
-        return;
+        setSkillCounter(prev => prev + 1);
+        dispatch({type: 'SET_SKILL_PROF', payload: value});
       }
     } else {
-      skillCounter -= 1;
-      setValues(state=> {
-        return [...state.filter(skill => skill !== value)]
-      })
+      setSkillCounter(prev => prev - 1);
+      dispatch({ type: 'REMOVE_SKILL_PROF', payload: value});
     }
-    console.log(skillCounter)
-    console.log(checkboxValues)
-    console.log(event.target.checked)
-    event.target.checked = false;
-  };
-
-  const setClassSkills = (event) => {
-    checkHandler(event);
-    dispatch({type: 'SET_SKILL_PROF', payload: checkboxValues});
-    console.table(skillBonus)
   }
+  
 
   return (
     <>
@@ -106,7 +85,7 @@ function SurveyClassSkills() {
           <b>Yo</b>
         )
       }
-      <button onClick={setClassSkills} >test</button>
+      <button >test</button>
     </>
   )
 }

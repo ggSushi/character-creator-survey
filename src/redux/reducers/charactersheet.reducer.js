@@ -105,6 +105,8 @@ const skillBonus = (state = [], action) => {
   switch (action.type) {
     case 'SET_SKILL_PROF':
       return [...state, action.payload];
+    case 'REMOVE_SKILL_PROF':
+      return state.filter(skill => skill !== action.payload);
     default:
       return state;
   }
