@@ -13,6 +13,7 @@ CREATE TABLE "user" (
 );
 
 -- GET request queries ---------
+-- All User's Chars
 Select "character".*, 
 "races"."name" as "race_name", 
 "classes"."name" as "class_name"
@@ -21,6 +22,16 @@ JOIN "user" ON "user"."id" = "character"."user_id"
 JOIN "races" ON "races"."id" = "character"."race_id"
 JOIN "classes" ON "classes"."id" = "character"."class_id"
 WHERE "user"."id" = 1;
+
+-- specific char details
+Select "character".*, 
+    "races"."name" as "race_name", 
+    "classes"."name" as "class_name"
+    from "character"
+    JOIN "user" ON "user"."id" = "character"."user_id"
+    JOIN "races" ON "races"."id" = "character"."race_id"
+    JOIN "classes" ON "classes"."id" = "character"."class_id"
+    WHERE "character"."id" = 1;
 
 
 SELECT "spell_list".*, 
@@ -96,12 +107,15 @@ OR "languages"."id" = "races"."language_id_2"
 JOIN "character" ON "character"."race_id" = "races"."id"
 WHERE "character"."id" = 1;
 
+-- DELETE Test ----
+DELETE FROM "character" where "character"."id" = 4;
 
 -- Character Sheet info -----------------------------------
 Create Table "character" (
 	"id" Serial Primary Key,
 	"user_id" INT References "user",
 	"name" varchar (100) NOT NULL,
+	"campaign" varchar (200),
 	"race_id" INT References "races",
 	"class_id" INT References "classes",
 	"proficiency_bonus" INT default 2,
@@ -126,10 +140,10 @@ Create Table "character" (
 );
 
 --Adding Character into table
-INSERT INTO "character" ("user_id", "name", "race_id", "class_id", "proficiency_bonus",
+INSERT INTO "character" ("user_id", "name", "campaign", "race_id", "class_id", "proficiency_bonus",
 "str_score", "dex_score", "con_score", "int_score", "wis_score", "cha_score", 
 "str_mod", "dex_mod", "con_mod" ,"int_mod", "wis_mod", "cha_mod", "description", "alignment", "ideals", "flaws", "weapon", "inventory")
-VALUES (1, 'Tansa Night', 1, 1, 2, 13, 16, 12, 14, 10, 9, 1, 3, 1, 2, 0, -1, 'Spends hours of their day working on projects and learning.', 'Neutral Good', 'Works hard to improve themselves', 'Might work too hard sometimes...', 'Light Crossbow: 1d8 piercing', 'Bag of Holding');
+VALUES (2,'Tampa Night', 'Primevil Academy', 1, 1, 2, 13, 16, 12, 14, 10, 9, 1, 3, 1, 2, 0, -1, 'Spends hours of their day working on projects and learning.', 'Neutral Good', 'Works hard to improve themselves', 'Might work too hard sometimes...', 'Light Crossbow: 1d8 piercing', 'Bag of Holding');
 
 
 ---------
