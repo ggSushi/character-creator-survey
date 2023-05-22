@@ -80,21 +80,9 @@ function SurveyClassSkills() {
 
   const setClassSkills = (event) => {
     checkHandler(event);
-
+    dispatch({type: 'SET_SKILL_PROF', payload: checkboxValues});
+    console.table(skillBonus)
   }
-
-
-  // const setClassSkills = (event) => {
-
-  //   if (skillCounter < skillAmount) {
-  //     checkHandler(event);
-  //     // dispatch({ type: 'SET_SKILL_PROF', payload: event.target.value });
-  //   } else {
-
-  //     alert(`Please choose only ${skillAmount} of skills.`);
-  //   }
-
-  // }
 
   return (
     <>
@@ -103,11 +91,11 @@ function SurveyClassSkills() {
         charClass === 'sorcerer-1' ? (
           <div>
             <u>Please choose {skillAmount} from the following:</u>
-            <form>
+            <form >
               {
                 sorcererSkills.map(skill => (
                   <div key={skill.id}>
-                    <input id={skill.id} name="skill-prof-class" type="checkbox" onChange={setClassSkills} value={skill.name} /> <b>{skill.name}</b> - {skill.description}
+                    <input id={skill.id} name="skill-prof-class" type="checkbox" onChange={checkHandler} value={skill.name} /> <b>{skill.name}</b> - {skill.description}
                   </div>
                 ))
               }
@@ -118,6 +106,7 @@ function SurveyClassSkills() {
           <b>Yo</b>
         )
       }
+      <button onClick={setClassSkills} >test</button>
     </>
   )
 }
