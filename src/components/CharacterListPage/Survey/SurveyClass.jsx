@@ -16,6 +16,7 @@ function SurveyClass() {
       history.push('/survey-page-2.1');
     }
   }
+  
   // handles Class value select
   const handleClassChange = (event) => {
     dispatch({ type: 'SET_CLASS_TYPE', payload: event.target.value});

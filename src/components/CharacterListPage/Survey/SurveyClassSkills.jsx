@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 
 let skillCounter = 0;
 
@@ -12,9 +12,8 @@ function SurveyClassSkills() {
   const skillBonus = useSelector(store => store.charReducers.skillBonus);
   let [skillAmount, setSkillAmount] = useState(2);
 
-
   //* all proficiency options for available classes
-  const sorcererSkills =[
+  const sorcererSkills = [
     {
       id: 1,
       name: 'Arcana',
@@ -51,14 +50,13 @@ function SurveyClassSkills() {
 
   // end skill proficiencies
 
-
   const setClassSkills = (event) => {
     skillCounter += 1;
     if (skillCounter <= skillAmount) {
       dispatch({ type: 'SET_SKILL_PROF', payload: event.target.value });
     } else {
+      skillCounter -= 1;
       alert(`Please choose only ${skillAmount} of skills.`);
-      skillCounter = 0;
       return;
     }
   }
@@ -75,7 +73,7 @@ function SurveyClassSkills() {
               {
                 sorcererSkills.map(skill => (
                   <div key={skill.id}>
-                    <input name="skill-prof-class"  type="checkbox" onChange={setClassSkills} value={skill.name} /> <b>{skill.name}</b> - {skill.description}
+                    <input id={skill.id} name="skill-prof-class" type="checkbox" onChange={setClassSkills} value={skill.name} /> <b>{skill.name}</b> - {skill.description}
                   </div>
                 ))
               }

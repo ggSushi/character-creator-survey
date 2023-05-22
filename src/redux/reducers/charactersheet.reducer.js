@@ -1,5 +1,6 @@
 import {combineReducers} from 'redux';
 
+// -------- Database reducers ---------- //
 const characterList = (state = [], action) => {
   switch (action.type) {
     case 'SET_CHARACTERS':
