@@ -52,26 +52,30 @@ function SurveyClassSkills() {
   // end skill proficiencies
 
   const checkHandler = (event) => {
-    const { value, checked } = event.target;
+    let { value, checked } = event.target;
 
     if (checked) {
       skillCounter += 1;
       if (skillCounter > skillAmount) {
         skillCounter -= 1;
         alert(`Please choose only ${skillAmount} of skills.`);
-        return;
       } else {
-        setValues(pre => [...pre, value])
+        setValues(state => [...state, {value}])
+        console.log(skillCounter)
+        console.log(checkboxValues)
+        console.log(event.target.checked)
+        return;
       }
     } else {
       skillCounter -= 1;
-      setValues(pre => {
-        return [...pre.filter(skill => skill !== value)]
+      setValues(state=> {
+        return [...state.filter(skill => skill !== value)]
       })
     }
     console.log(skillCounter)
     console.log(checkboxValues)
     console.log(event.target.checked)
+    event.target.checked = false;
   };
 
   const setClassSkills = (event) => {
