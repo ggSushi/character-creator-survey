@@ -1,12 +1,11 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 function SurveyClassSkills() {
   const history = useHistory();
   const dispatch = useDispatch();
   const charClass = useSelector(store => store.charReducers.charClass);
-  const abilityScores = useSelector(store => store.charReducers.abilityScores);
   const skillBonus = useSelector(store => store.charReducers.skillBonus);
   const [skillCounter, setSkillCounter] = useState(0);
   let [skillAmount, setSkillAmount] = useState(0);
