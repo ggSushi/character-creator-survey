@@ -96,10 +96,15 @@ const charClass = (state = '', action) => {
   }
 }
 
-const abilityScores = (state = [], action) => {
+const abilityScores = (state = {
+  }, action) => {
   switch (action.type) {
     case 'SET_ABILITY_SCORES':
       return action.payload;
+    case 'CHANGE_ABILITY_SCORES':
+      console.log(`anythingggg`, action.payload);
+      console.log(action.payload);
+      return {...state, ...action.payload};
     default:
       return state;
   }
@@ -113,6 +118,15 @@ const skillBonus = (state = [], action) => {
       return state.filter(skill => skill !== action.payload);
     case 'CLEAR_SKILLS':
       return [];
+    default:
+      return state;
+  }
+}
+
+const charRace = (state = '', action) => {
+  switch (action.type) {
+    case 'SET_RACE_TYPE':
+      return action.payload;
     default:
       return state;
   }
@@ -133,6 +147,7 @@ const charReducers = combineReducers({
   charClass,
   abilityScores,
   skillBonus,
+  charRace
 
 });
 
