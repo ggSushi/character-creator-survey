@@ -1,4 +1,4 @@
-import {combineReducers} from 'redux';
+import { combineReducers } from 'redux';
 
 // -------- Database reducers ---------- //
 const characterList = (state = [], action) => {
@@ -70,7 +70,9 @@ const characterInfo = (state = [], action) => {
 const characterName = (state = '', action) => {
   if (action.type === 'SET_CHARACTER_NAME') {
     return action.payload;
-  } 
+  } else if (action.type === 'CLEAR_NAME_AND_CAMPAIGN') {
+    return '';
+  }
   return state;
 }
 
@@ -78,6 +80,8 @@ const campaignName = (state = '', action) => {
   switch (action.type) {
     case 'SET_CAMPAIGN_NAME':
       return action.payload;
+    case 'CLEAR_NAME_AND_CAMPAIGN':
+      return '';
     default:
       return state;
   }
@@ -107,6 +111,8 @@ const skillBonus = (state = [], action) => {
       return [...state, action.payload];
     case 'REMOVE_SKILL_PROF':
       return state.filter(skill => skill !== action.payload);
+    case 'CLEAR_SKILLS':
+      return [];
     default:
       return state;
   }

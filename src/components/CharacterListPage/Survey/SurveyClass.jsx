@@ -6,7 +6,7 @@ function SurveyClass() {
   const history = useHistory();
   const dispatch = useDispatch();
   const charClass = useSelector(store => store.charReducers.charClass);
-
+  
   const nextPage = (event) => {
     event.preventDefault();
     if (charClass === '') {
@@ -16,7 +16,11 @@ function SurveyClass() {
       history.push('/survey-page-2.1');
     }
   }
-  
+
+  const backPage = () => {
+    history.push('/survey-page-1')
+  }
+
   // handles Class value select
   const handleClassChange = (event) => {
     dispatch({ type: 'SET_CLASS_TYPE', payload: event.target.value});
@@ -128,6 +132,7 @@ function SurveyClass() {
     <br />
     <input type="submit" value="Next Page"/>
     </form>
+    <button onClick={backPage} >Back</button>
     </>
   )
 }

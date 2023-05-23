@@ -16,6 +16,11 @@ function SurveyName() {
     }
   }
 
+  const backToHome = () => {
+    dispatch({type: 'CLEAR_NAME_AND_CAMPAIGN'})
+    history.push('/');
+  }
+
   const handleCharNameChange = (event) => {
     let action = { type: 'SET_CHARACTER_NAME', payload: event.target.value };
     dispatch(action)
@@ -37,6 +42,7 @@ function SurveyName() {
         <br />
         <input onChange={handlecampaignNameChange} placeholder="e.g. Icronus Campaign" />
       </div>
+      <button onClick={backToHome} >Back to home</button>
       <button onClick={nextPage}>Next Page</button>
     </>
   )
