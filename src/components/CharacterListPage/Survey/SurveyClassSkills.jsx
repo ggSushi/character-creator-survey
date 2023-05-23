@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 function SurveyClassSkills() {
   const history = useHistory();
@@ -52,13 +52,16 @@ function SurveyClassSkills() {
     if (checked) {
       if (skillCounter >= skillAmount) {
         alert(`Please choose only ${skillAmount} of skills.`);
+        event.target.checked = false;
       } else {
         setSkillCounter(prev => prev + 1);
         dispatch({type: 'SET_SKILL_PROF', payload: value});
+        return;
       }
     } else {
       setSkillCounter(prev => prev - 1);
       dispatch({ type: 'REMOVE_SKILL_PROF', payload: value});
+      event.target.checked = false;
     }
   }
   
