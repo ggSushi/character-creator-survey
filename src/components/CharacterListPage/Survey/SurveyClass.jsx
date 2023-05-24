@@ -29,7 +29,7 @@ function SurveyClass() {
 
   // handles Ability scores on class value select
   const classSelect = (event) => {
-    if (event.target.value === 'sorcerer-1') {
+    if (event.target.value === 'Sorcerer') {
       console.log(`sorcerer`)
       const abilityScores = {
         str_score: 8,
@@ -41,7 +41,7 @@ function SurveyClass() {
       }
       dispatch({ type: 'SET_ABILITY_SCORES', payload: abilityScores})
 
-    } else if (event.target.value === 'barbarian-2') {
+    } else if (event.target.value === 'Barbarian') {
       console.log(`barb`)
       const abilityScores = {
         str_score: 15,
@@ -53,7 +53,7 @@ function SurveyClass() {
       }
       dispatch({ type: 'SET_ABILITY_SCORES', payload: abilityScores})
 
-    } else if (event.target.value === 'paladin-3') {
+    } else if (event.target.value === 'Paladin') {
       console.log(`paladin`)
       const abilityScores = {
         str_score: 13,
@@ -65,7 +65,7 @@ function SurveyClass() {
       }
       dispatch({ type: 'SET_ABILITY_SCORES', payload: abilityScores})
 
-    } else if (event.target.value === 'ranger-4') {
+    } else if (event.target.value === 'Ranger') {
       console.log(`ranger`)
       const abilityScores = {
         str_score: 10,
@@ -77,7 +77,7 @@ function SurveyClass() {
       }
       dispatch({ type: 'SET_ABILITY_SCORES', payload: abilityScores})
 
-    } else if (event.target.value === 'cleric-5') {
+    } else if (event.target.value === 'Cleric') {
       console.log(`cleric`)
       const abilityScores = {
         str_score: 14,
@@ -89,7 +89,7 @@ function SurveyClass() {
       }
       dispatch({ type: 'SET_ABILITY_SCORES', payload: abilityScores})
 
-    } else if (event.target.value === 'rogue-6') {
+    } else if (event.target.value === 'Rogue') {
       console.log(`rogue`)
       const abilityScores = {
         str_score: 8,
@@ -112,22 +112,22 @@ function SurveyClass() {
     Which of these best describes your character?
     <br/>
     <form onSubmit={nextPage}>
-    <input name="class-select" onClick={handleClassChange} type="radio" value="sorcerer-1"/> 
+    <input name="class-select" onClick={handleClassChange} type="radio" value="Sorcerer"/> 
     An offensive Spellcaster skilled with wild magic.
     <br />
-    <input name="class-select" onClick={handleClassChange} type="radio" value="barbarian-2"/> 
+    <input name="class-select" onClick={handleClassChange} type="radio" value="Barbarian"/> 
     Likes to rush in, fighting toe-to-toe with a fiery Rage.
     <br/>
-    <input name="class-select" onClick={handleClassChange} type="radio" value="paladin-3"/> 
+    <input name="class-select" onClick={handleClassChange} type="radio" value="Paladin"/> 
     Skilled in defensive maneuvers with an aptitude for healing.
     <br />
-    <input name="class-select" onClick={handleClassChange} type="radio" value="ranger-4"/> 
+    <input name="class-select" onClick={handleClassChange} type="radio" value="Ranger"/> 
     Natural Survivalist skills with a keen sniper's eye.
     <br />
-    <input name="class-select" onClick={handleClassChange} type="radio" value="cleric-5"/> 
+    <input name="class-select" onClick={handleClassChange} type="radio" value="Cleric"/> 
     Skillful Healing Magic at it's most efficient.
     <br />
-    <input name="class-select" onClick={handleClassChange} type="radio" value="rogue-6"/> 
+    <input name="class-select" onClick={handleClassChange} type="radio" value="Rogue"/> 
     Swift feet, deft hands, and a sly personality.
     <br />
     <input type="submit" value="Next Page"/>

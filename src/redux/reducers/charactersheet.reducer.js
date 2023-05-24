@@ -102,8 +102,9 @@ const abilityScores = (state = {
     case 'SET_ABILITY_SCORES':
       return action.payload;
     case 'CHANGE_ABILITY_SCORES':
-      console.log(`anythingggg`, action.payload);
-      console.log(action.payload);
+      //! This line of code will take the existing state and 
+      //! update the state with the payload calculations 
+      //! without replacing it with the payload.
       return {...state, ...action.payload};
     default:
       return state;

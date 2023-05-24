@@ -6,18 +6,18 @@ function SurveyRace() {
   const history = useHistory();
   const dispatch = useDispatch();
   const abilityScores = useSelector(store => store.charReducers.abilityScores);
-  // raceInfo is DB race info
-  const raceInfo = useSelector(store => store.charReducers.raceInfo);
   // charRace is user-selected info on DOM
   const charRace = useSelector(store => store.charReducers.charRace);
+
 
   const handleRaceChange = (event) => {
     dispatch({type: 'SET_RACE_TYPE', payload: event.target.value})
     console.log(event.target.value)
   }
 
+  //* This code will occur on nextPage
   const changeAbilityScores = () => {
-    if (charRace === 'human') {
+    if (charRace === 'Human') {
       dispatch({
         type: 'CHANGE_ABILITY_SCORES', 
         payload:{
@@ -29,7 +29,7 @@ function SurveyRace() {
           cha_score: abilityScores.cha_score + 1
         }
       })
-    } else if (charRace === 'halfling') {
+    } else if (charRace === 'Halfling') {
       dispatch({
         type: 'CHANGE_ABILITY_SCORES',
         payload: {
@@ -37,31 +37,72 @@ function SurveyRace() {
           cha_score: abilityScores.cha_score + 1
         }
       })
+    } else if (charRace === 'Tiefling') {
+      dispatch({
+        type: 'CHANGE_ABILITY_SCORES',
+        payload:{
+          int_score: abilityScores.int_score + 1,
+          cha_score: abilityScores.cha_score + 2
+        }
+      })
+    } else if (charRace === 'Elf') {
+      dispatch({
+        type: 'CHANGE_ABILITY_SCORES',
+        payload:{
+          dex_score: abilityScores.dex_score + 2
+        }
+      })
+    } else if (charRace === 'Dwarf') {
+      dispatch({
+        type: 'CHANGE_ABILITY_SCORES',
+        payload:{
+          con_score: abilityScores.con_score + 2,
+          wis_score: abilityScores.wis_score + 1
+        }
+      })
+    } else if (charRace === 'Half-orc') {
+      dispatch({
+        type: 'CHANGE_ABILITY_SCORES',
+        payload:{
+          str_score: abilityScores.str_score + 2,
+          con_score: abilityScores.con_score + 1
+        }
+      })
+    } else {
+      alert(`Please select an available race.`)
     }
+  }
 
-    
+  const backPage = () => {
+    history.push('/survey-page-2.1')
+  }
+
+  const nextPage = (event) => {
+    event.preventDefault();
+    changeAbilityScores();
+    history.push('/survey-review')
   }
 
   return(
     <>
     What kind of race is your character?
     <br />
-    <form >
-      <input name="race-select" onClick={handleRaceChange} type="radio" value="human"/> Human
+    <form onSubmit={nextPage} >
+      <input name="race-select" onClick={handleRaceChange} type="radio" value="Human"/> Human
       <br />
-      <input name="race-select" onClick={handleRaceChange} type="radio" value="halfling"/> Halfling
+      <input name="race-select" onClick={handleRaceChange} type="radio" value="Halfling"/> Halfling
       <br />
-      <input name="race-select" onClick={handleRaceChange} type="radio" value="tiefling"/> Tiefling
+      <input name="race-select" onClick={handleRaceChange} type="radio" value="Tiefling"/> Tiefling
       <br />
-      <input name="race-select" onClick={handleRaceChange} type="radio" value="elf"/> Elf
+      <input name="race-select" onClick={handleRaceChange} type="radio" value="Elf"/> Elf
       <br />
-      <input name="race-select" onClick={handleRaceChange} type="radio" value="dwarf"/> Dwarf
+      <input name="race-select" onClick={handleRaceChange} type="radio" value="Dwarf"/> Dwarf
       <br />
-      <input name="race-select" onClick={handleRaceChange} type="radio" value="half-ord"/> Half-Orc
+      <input name="race-select" onClick={handleRaceChange} type="radio" value="Half-orc"/> Half-Orc
+      <br />
+      <input type="submit" value="Next Page"/>
     </form>
-    {JSON.stringify(abilityScores)}
-    {JSON.stringify(charRace)}
-    <button onClick={changeAbilityScores} >change score test</button>
+    <button onClick={backPage} >Back</button>
 
 
     </>

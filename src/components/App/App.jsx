@@ -22,7 +22,6 @@ import CharacterSheetDescription from '../CharacterListPage/CharacterSheet/Chara
 import SurveyName from '../CharacterListPage/Survey/SurveyName.jsx';
 import SurveyRace from '../CharacterListPage/Survey/SurveyRace.jsx';
 import SurveyClass from '../CharacterListPage/Survey/SurveyClass.jsx';
-import SurveySkills from '../CharacterListPage/Survey/SurveySkills.jsx';
 import SurveyReview from '../CharacterListPage/Survey/ReviewPage';
 import SurveyClassSkills from '../CharacterListPage/Survey/SurveyClassSkills.jsx';
 
@@ -89,10 +88,6 @@ function App() {
 
           <ProtectedRoute exact path="/survey-page-3">
             <SurveyRace />
-          </ProtectedRoute>
-
-          <ProtectedRoute exact path="/survey-page-4">
-            <SurveySkills />
           </ProtectedRoute>
 
           <ProtectedRoute exact path="/survey-review">

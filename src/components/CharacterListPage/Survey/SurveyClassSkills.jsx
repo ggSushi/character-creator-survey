@@ -291,7 +291,7 @@ function SurveyClassSkills() {
       Which of these skills is your character good at?
       {JSON.stringify(skillBonus)}
       {
-        charClass === 'sorcerer-1' ? (
+        charClass === 'Sorcerer' ? (
           <div>
             <u>Please choose {skillAmount} from the following:</u>
             <form onSubmit={nextPage} >
@@ -305,7 +305,7 @@ function SurveyClassSkills() {
               <input type="submit" value="Next Page" />
             </form>
           </div>
-        ) : charClass === 'barbarian-2' ? (
+        ) : charClass === 'Barbarian' ? (
           <div>
           <u>Please choose {skillAmount} from the following:</u>
           <form onSubmit={nextPage} >
@@ -319,7 +319,7 @@ function SurveyClassSkills() {
             <input type="submit" value="Next Page" />
           </form>
         </div>
-        ) : charClass === 'paladin-3' ? (
+        ) : charClass === 'Paladin' ? (
           <div>
           <u>Please choose {skillAmount} from the following:</u>
           <form onSubmit={nextPage} >
@@ -333,7 +333,7 @@ function SurveyClassSkills() {
             <input type="submit" value="Next Page" />
           </form>
         </div>
-        ) : charClass === 'ranger-4' ? (
+        ) : charClass === 'Ranger' ? (
           <div>
           <u>Please choose {skillAmount} from the following:</u>
           <form onSubmit={nextPage} >
@@ -347,7 +347,7 @@ function SurveyClassSkills() {
             <input type="submit" value="Next Page" />
           </form>
         </div>
-        ) : charClass === 'cleric-5' ? (
+        ) : charClass === 'Cleric' ? (
           <div>
           <u>Please choose {skillAmount} from the following:</u>
           <form onSubmit={nextPage} >
@@ -361,7 +361,7 @@ function SurveyClassSkills() {
             <input type="submit" value="Next Page" />
           </form>
         </div>
-        ) : charClass === 'rogue-6' ? (
+        ) : charClass === 'Rogue' ? (
           <div>
           <u>Please choose {skillAmount} from the following:</u>
           <form onSubmit={nextPage} >
