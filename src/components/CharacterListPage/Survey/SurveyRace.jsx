@@ -106,7 +106,7 @@ function SurveyRace() {
       <input name="race-select" onClick={handleRaceChange} type="radio" value="Half-orc"/> 
       Half-Orc - Strong beings; eager to achieve greatness through battle.
       <br />
-      <input type="submit" value="Next Page"/>
+      <input type="submit" value="Review Page"/>
     </form>
     <button onClick={backPage} >Back</button>
 

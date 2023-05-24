@@ -11,12 +11,17 @@ function SurveyReview() {
   const charRace = useSelector(store => store.charReducers.charRace);
   const charClass = useSelector(store => store.charReducers.charClass);
   const skillBonus = useSelector(store => store.charReducers.skillBonus);
+  const raceInfo = useSelector(store => store.charReducers.raceInfo);
 
+  const getRaceAndClassIds = () => {
+    
+  }
 
+  //* This code block will determine each score's modifier value
   const calculateMods = () => {
     // Object.values(object) will take the object key values and put them in an array.
     const abilities = Object.values(abilityScores)
-    const modsArray = [];
+    let modsArray = [];
     console.log(abilities)
     for (let score of abilities) {
       if (score === 1) {
@@ -41,14 +46,20 @@ function SurveyReview() {
         modsArray.push(4)
       } else if (score === 20) {
         modsArray.push(5)
-      } 
+      } else {
+        modsArray = [];
+        alert(`There are no Ability Scores.`)
+      }
     }
-    console.log(`modsArray: ${modsArray}` , `user.id: ${user.id}`)
+    // console.log(`modsArray: ${modsArray}` , `user.id: ${user.id}`)
     dispatch({type: 'SET_ABILITY_MODS', payload: modsArray})
-  }
+  } // ends calculateMods
 
-
-  //TODO: Write code to clear all forms once character is submitted.
+  //* This will clear all reducer values and send user to the beginning of the survey.
+  const restartSurvey = () => {
+    dispatch({type: 'CLEAR_FORM'})
+    history.push('/survey-page-1')
+  } // end restartSurvey
 
 
   //TODO: Write POST Request
@@ -77,6 +88,7 @@ function SurveyReview() {
         Charisma Score: {abilityScores.cha_score}
       </div>
       <button onClick={calculateMods} >calculate mods test</button>
+      <button onClick={restartSurvey} >Restart Survey</button>
     </>
   )
 }

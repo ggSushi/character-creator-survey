@@ -72,6 +72,8 @@ const characterName = (state = '', action) => {
     return action.payload;
   } else if (action.type === 'CLEAR_NAME_AND_CAMPAIGN') {
     return '';
+  } else if (action.type === 'CLEAR_FORM') {
+    return '';
   }
   return state;
 }
@@ -82,6 +84,8 @@ const campaignName = (state = '', action) => {
       return action.payload;
     case 'CLEAR_NAME_AND_CAMPAIGN':
       return '';
+    case 'CLEAR_FORM':
+      return '';
     default:
       return state;
   }
@@ -91,6 +95,8 @@ const charClass = (state = '', action) => {
   switch (action.type) {
     case 'SET_CLASS_TYPE':
       return action.payload;
+    case 'CLEAR_FORM':
+      return '';
     default:
       return state;
   }
@@ -106,6 +112,8 @@ const abilityScores = (state = {
       //! update the state with the payload calculations 
       //! without replacing it with the payload.
       return {...state, ...action.payload};
+    case 'CLEAR_FORM':
+      return {};
     default:
       return state;
   }
@@ -115,6 +123,8 @@ const abilityMods = (state = [], action) => {
   switch (action.type) {
     case 'SET_ABILITY_MODS':
       return action.payload;
+    case 'CLEAR_FORM':
+      return [];
     default:
       return state;
   }
@@ -128,6 +138,8 @@ const skillBonus = (state = [], action) => {
       return state.filter(skill => skill !== action.payload);
     case 'CLEAR_SKILLS':
       return [];
+    case 'CLEAR_FORM':
+      return [];
     default:
       return state;
   }
@@ -137,6 +149,8 @@ const charRace = (state = '', action) => {
   switch (action.type) {
     case 'SET_RACE_TYPE':
       return action.payload;
+    case 'CLEAR_FORM':
+      return '';
     default:
       return state;
   }
