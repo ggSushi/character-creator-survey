@@ -88,17 +88,23 @@ function SurveyRace() {
     What kind of race is your character?
     <br />
     <form onSubmit={nextPage} >
-      <input name="race-select" onClick={handleRaceChange} type="radio" value="Human"/> Human
+      <input name="race-select" onClick={handleRaceChange} type="radio" value="Human"/> 
+      Human - Well-rounded beings from the Material Plane.
       <br />
-      <input name="race-select" onClick={handleRaceChange} type="radio" value="Halfling"/> Halfling
+      <input name="race-select" onClick={handleRaceChange} type="radio" value="Halfling"/> 
+      Halfling - Short, swift, and naturally deft beings.
       <br />
-      <input name="race-select" onClick={handleRaceChange} type="radio" value="Tiefling"/> Tiefling
+      <input name="race-select" onClick={handleRaceChange} type="radio" value="Tiefling"/> 
+      Tiefling - Often solitary, even if not by choice; horned beings.
       <br />
-      <input name="race-select" onClick={handleRaceChange} type="radio" value="Elf"/> Elf
+      <input name="race-select" onClick={handleRaceChange} type="radio" value="Elf"/> 
+      Elf - Naturally gifted in magic and keen-eyed in the field.
       <br />
-      <input name="race-select" onClick={handleRaceChange} type="radio" value="Dwarf"/> Dwarf
+      <input name="race-select" onClick={handleRaceChange} type="radio" value="Dwarf"/> 
+      Dwarf - Slightly shorter, but skilled with their tools, and resilient.
       <br />
-      <input name="race-select" onClick={handleRaceChange} type="radio" value="Half-orc"/> Half-Orc
+      <input name="race-select" onClick={handleRaceChange} type="radio" value="Half-orc"/> 
+      Half-Orc - Strong beings; eager to achieve greatness through battle.
       <br />
       <input type="submit" value="Next Page"/>
     </form>

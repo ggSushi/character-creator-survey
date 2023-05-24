@@ -11,7 +11,7 @@ function SurveyClassSkills() {
   let [skillAmount, setSkillAmount] = useState(0);
 
   const checkClass = () => {
-    if (charClass === 'rogue-6') {
+    if (charClass === 'Rogue') {
       setSkillAmount(4);
     } else {
       setSkillAmount(2);
