@@ -111,6 +111,15 @@ const abilityScores = (state = {
   }
 }
 
+const abilityMods = (state = [], action) => {
+  switch (action.type) {
+    case 'SET_ABILITY_MODS':
+      return action.payload;
+    default:
+      return state;
+  }
+}
+
 const skillBonus = (state = [], action) => {
   switch (action.type) {
     case 'SET_SKILL_PROF':
@@ -148,7 +157,8 @@ const charReducers = combineReducers({
   charClass,
   abilityScores,
   skillBonus,
-  charRace
+  charRace,
+  abilityMods,
 
 });
 

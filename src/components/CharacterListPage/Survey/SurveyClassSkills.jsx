@@ -12,9 +12,9 @@ function SurveyClassSkills() {
 
   const checkClass = () => {
     if (charClass === 'Rogue') {
-      setSkillAmount(4);
+      setSkillAmount(6);
     } else {
-      setSkillAmount(2);
+      setSkillAmount(4);
     }
   };
 
@@ -258,11 +258,14 @@ function SurveyClassSkills() {
   ] // end rogue skills
   // end all skill proficiencies
 
+  // This block of code controls the checkbox actions aon the DOM.
   const checkHandler = (event) => {
     let {value, checked} = event.target;
     if (checked) {
       if (skillCounter >= skillAmount) {
         alert(`Please choose only ${skillAmount} of skills.`);
+        // 'event.target.checked = false' will force the checkbox to become unchecked.
+        // This should only happen on actions that don't store values into reducer.
         event.target.checked = false;
       } else {
         setSkillCounter(prev => prev + 1);
@@ -274,7 +277,7 @@ function SurveyClassSkills() {
       dispatch({ type: 'REMOVE_SKILL_PROF', payload: value});
       event.target.checked = false;
     }
-  }
+  } // end checkHandler
   
   const nextPage = (event) => {
     event.preventDefault();
