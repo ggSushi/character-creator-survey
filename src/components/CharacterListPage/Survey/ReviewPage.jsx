@@ -1,5 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import {useEffect} from 'react';
+import axios from 'axios';
 
 function SurveyReview() {
   const history = useHistory();
@@ -11,11 +13,30 @@ function SurveyReview() {
   const charRace = useSelector(store => store.charReducers.charRace);
   const charClass = useSelector(store => store.charReducers.charClass);
   const skillBonus = useSelector(store => store.charReducers.skillBonus);
-  const raceInfo = useSelector(store => store.charReducers.raceInfo);
+  
 
-  const getRaceAndClassIds = () => {
-    
+  const getRaceIdDb = () => {
+    axios.get(`/api/characters/all-race/${charRace}`).then((response) => {
+      console.log(`race_id`, response.data)
+    }).catch((error) => {
+      console.log(`Error in axios.get race_id: ${error}`);
+      alert(`eck.`);
+    })
   }
+
+  const getClassIdDb = () => {
+    axios.get(`/api/characters/all-class/${charClass}`).then((response) => {
+      console.log(`class_id`, response.data)
+    }).catch((error) => {
+      console.log(`Error in axios.get class_id: ${error}`);
+      alert(`uck.`);
+    })
+  }
+
+  useEffect(() => {
+    getRaceIdDb();
+    getClassIdDb();
+  }, [])
 
   //* This code block will determine each score's modifier value
   const calculateMods = () => {

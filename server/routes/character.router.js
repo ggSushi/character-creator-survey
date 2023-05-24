@@ -51,6 +51,17 @@ router.get('/character-info/:id', (req, res) => {
     })
 })
 
+//* selecting from ALL races
+router.get(`/all-race/:race`, (req,res) => {
+  const queryText = `SELECT * FROM "races" where "name" = $1;`;
+  pool.query(queryText, [req.params.race]).then((result) => {
+    res.send(result.rows);
+  }).catch((error) => {
+    console.log(`ERROR in race-info GET: ${error}`);
+    res.sendStatus(500);
+  })
+})
+
 //* Spellcasting GET Request
 router.get('/spellcasting/:id', (req, res) => {
   // GET route code here
@@ -84,7 +95,7 @@ router.get('/spellcasting/:id', (req, res) => {
     })
 }); // end GET spellcasting
 
-//* Class-info GET Request
+//* Class-info@id GET Request
 router.get('/class-info/:id', (req, res) => {
   const queryText = `
     Select "classes"."name" as "class_name", 
@@ -104,7 +115,6 @@ router.get('/class-info/:id', (req, res) => {
     OR "class_feats"."id" = "classes"."feat_id_3"
     JOIN "character" ON "character"."class_id" = "classes"."id"
     WHERE "character"."id" = $1; `;
-  // TODO: change the 1 in the input
   pool.query(queryText, [req.params.id])
     .then((result) => {
       res.send(result.rows);
@@ -112,7 +122,18 @@ router.get('/class-info/:id', (req, res) => {
       console.log(`Error in GET class-info: ${error}`);
       res.sendStatus(500);
     })
-}); // end Class-info GET Request
+}); // end Class-info@idGET Request
+
+//* Class-info from ALL
+router.get('/all-class/:class', (req,res) => {
+  const queryText = `SELECT * FROM "classes" where "name" = $1;`;
+  pool.query(queryText, [req.params.class]).then((result) => {
+    res.send(result.rows);
+  }).catch((error) => {
+    console.log(`ERROR in class-info GET: ${error}`);
+    res.sendStatus(500);
+  })
+})
 
 //* Race Languages GET Request
 router.get('/languages/:id', (req, res) => {
