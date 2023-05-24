@@ -12,7 +12,7 @@ function SurveyRace() {
 
   const handleRaceChange = (event) => {
     dispatch({type: 'SET_RACE_TYPE', payload: event.target.value})
-    console.log(event.target.value)
+    // console.log(event.target.value)
   }
 
   //* This code will occur on nextPage
@@ -95,7 +95,7 @@ function SurveyRace() {
       Halfling - Short, swift, and naturally deft beings.
       <br />
       <input name="race-select" onClick={handleRaceChange} type="radio" value="Tiefling"/> 
-      Tiefling - Often solitary, even if not by choice; horned beings.
+      Tiefling - Often solitary and holds great arcane power.
       <br />
       <input name="race-select" onClick={handleRaceChange} type="radio" value="Elf"/> 
       Elf - Naturally gifted in magic and keen-eyed in the field.

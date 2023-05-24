@@ -29,7 +29,7 @@ function CharacterListPage() {
       console.log(`Error in axios.delete: ${error}`);
       alert(`That's a no from me, dawg.`);
     })
-  }
+  } // end DELETE Request
 
   useEffect(() => {
     getCharacterList();
