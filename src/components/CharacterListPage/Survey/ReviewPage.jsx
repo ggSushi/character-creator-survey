@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import {useEffect} from 'react';
+import {useState, useEffect} from 'react';
 import axios from 'axios';
 
 function SurveyReview() {
@@ -8,25 +8,34 @@ function SurveyReview() {
   const dispatch = useDispatch();
   const user = useSelector(store => store.user);
   const abilityScores = useSelector(store => store.charReducers.abilityScores);
+  const abilityMods = useSelector(store => store.charReducers.abilityMods);
   const characterName = useSelector(store => store.charReducers.characterName);
   const campaignName = useSelector(store => store.charReducers.campaignName);
   const charRace = useSelector(store => store.charReducers.charRace);
   const charClass = useSelector(store => store.charReducers.charClass);
   const skillBonus = useSelector(store => store.charReducers.skillBonus);
-  
+  const [hitPointBase, setHitPointBase] = useState(0);
+  const [raceId, setRaceId] = useState(0);
+  const [classId, setClassId] = useState(0);
+  const hitPointMax = hitPointBase + abilityMods[2];
 
+  // GET Request for race info
   const getRaceIdDb = () => {
     axios.get(`/api/characters/all-race/${charRace}`).then((response) => {
-      console.log(`race_id`, response.data)
+      let responseArray = response.data
+      setRaceId(responseArray[0].id);
     }).catch((error) => {
       console.log(`Error in axios.get race_id: ${error}`);
       alert(`eck.`);
     })
   }
 
+  // GET Request for class info
   const getClassIdDb = () => {
     axios.get(`/api/characters/all-class/${charClass}`).then((response) => {
-      console.log(`class_id`, response.data)
+      let responseArray = response.data
+      setClassId(responseArray[0].id)
+      setHitPointBase(responseArray[0].hit_point_base)
     }).catch((error) => {
       console.log(`Error in axios.get class_id: ${error}`);
       alert(`uck.`);
