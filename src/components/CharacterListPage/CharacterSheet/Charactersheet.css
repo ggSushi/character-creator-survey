@@ -1,0 +1,9 @@
+.name-header {
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.abilities {
+  display: flex;
+  justify-content: space-around;
+}
