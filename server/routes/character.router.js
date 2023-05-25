@@ -202,22 +202,25 @@ router.post('/', async (req, res) => {
       user
     } = req.body;
     await db.query('BEGIN')
+    console.log(abilityScores)
     const scoreValues = Object.values(abilityScores);
-    await db.query(`
+    const charInsertResults = await db.query(`
     INSERT INTO "character" ("user_id", "name", "campaign", 
     "race_id", "class_id", "str_score", "dex_score", "con_score", 
     "int_score", "wis_score", "cha_score", "hit_point_max",
     "str_mod", "dex_mod", "con_mod", "int_mod", "wis_mod", "cha_mod")
-    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12);
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18) RETURNING "id";
     `, 
     [user.id, characterName, campaignName, raceId, classId, 
     scoreValues[0], scoreValues[1], scoreValues[2], 
     scoreValues[3], scoreValues[4], scoreValues[5], hitPointMax,
     abilityMods[0], abilityMods[1], abilityMods[2], 
     abilityMods[3], abilityMods[4], abilityMods[5]]);
+    console.log(`charresbby`, charInsertResults.rows)
+    const charId = charInsertResults.rows
 
     await db.query('COMMIT');
-    res.sendStatus(201);
+    res.send(charId);
 
   } catch (error) {
     await db.query('ROLLBACK');

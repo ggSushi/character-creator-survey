@@ -22,7 +22,7 @@ function SurveyReview() {
   const [classId, setClassId] = useState(0);
   const hitPointMax = hitPointBase + abilityMods[2];
 
-  const submitEverything = () =>{
+  const saveEverything = () =>{
     dispatch({
       type: 'SAVE_EVERYTHING', 
       payload: {
@@ -40,6 +40,7 @@ function SurveyReview() {
       }
     });
   }
+
   // GET Request for race info
   const getRaceIdDb = () => {
     axios.get(`/api/characters/all-race/${charRace}`).then((response) => {
@@ -67,8 +68,8 @@ function SurveyReview() {
     getRaceIdDb();
     getClassIdDb();
     calculateMods();
-    submitEverything();
   }, [])
+
 
   //* This code block will determine each score's modifier value
   const calculateMods = () => {
@@ -115,7 +116,31 @@ function SurveyReview() {
   } // end restartSurvey
 
   //TODO: Write POST Request
-
+  const submitCharacter = () => {
+    axios.post('/api/characters', 
+    {
+      abilityScores,
+      abilityMods,
+      characterName,
+      campaignName,
+      charRace,
+      charClass,
+      skillBonus,
+      raceId,
+      classId,
+      hitPointMax,
+      user
+    }
+    ).then((response) => {
+      let returnId = response.data;
+      console.log(`returnId`, returnId)
+      dispatch({type: 'SET_CHARACTER_ID', payload: returnId[0].id});
+      dispatch({ type: 'FETCH_CHAR_INFO', payload: returnId[0].id});
+      history.push('/character-sheet-stats')
+    }).catch((error) => {
+      alert(`Error in POST: ${error}`);
+    })
+  }
 
 
   return (
@@ -141,7 +166,8 @@ function SurveyReview() {
         <br />
         Charisma Score: {abilityScores.cha_score}
       </div>
-      <button onClick={submitEverything} >submitEverything test</button>
+
+      <button onClick={submitCharacter} >To Charactersheet</button>
       <button onClick={restartSurvey} >Restart Survey</button>
     </>
   )
