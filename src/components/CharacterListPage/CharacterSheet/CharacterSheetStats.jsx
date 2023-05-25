@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import AbilityScores from './AbilityScores.jsx';
+import SkillsAndSaves from './SkillsAndSaves.jsx';
 import './Charactersheet.css';
 
 
@@ -58,18 +59,18 @@ function CharacterSheetStats() {
                 <b>Proficiency Bonus: +{info.proficiency_bonus}</b>
               </div>
               <AbilityScores info={info}/>
-              
             </div>
           ))
         }
+        <SkillsAndSaves classInfo={classInfo}/>
 
       </div>
 
 
-      {JSON.stringify(characterInfo)}
-      {JSON.stringify(languages)}
+      {/* {JSON.stringify(characterInfo)} */}
+      {/* {JSON.stringify(languages)} */}
       {JSON.stringify(classInfo)}
-      {JSON.stringify(raceInfo)}
+      {/* {JSON.stringify(raceInfo)} */}
 
     </>
   )
