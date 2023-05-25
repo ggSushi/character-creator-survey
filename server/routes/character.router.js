@@ -181,11 +181,51 @@ router.get('/race-feats/:id', (req, res) => {
 }); // end race-feats GET Request
 
 // TODO POST Requests
-/**
- * POST route template
- */
-router.post('/', (req, res) => {
-  // POST route code here
+router.post('/', async (req, res) => {
+  const db = await pool.connect();
+  console.log(`req.body:` , req.body);
+  try {
+    //? When deconstructing the req.body, 
+    //? it turns all of the properties of req.body into usable 
+    //? variables. It will show that they are unused initially. - gd
+    const {
+      abilityScores,
+      abilityMods,
+      characterName,
+      campaignName,
+      charRace,
+      charClass,
+      skillBonus,
+      raceId,
+      classId,
+      hitPointMax,
+      user
+    } = req.body;
+    await db.query('BEGIN')
+    const scoreValues = Object.values(abilityScores);
+    await db.query(`
+    INSERT INTO "character" ("user_id", "name", "campaign", 
+    "race_id", "class_id", "str_score", "dex_score", "con_score", 
+    "int_score", "wis_score", "cha_score", "hit_point_max",
+    "str_mod", "dex_mod", "con_mod", "int_mod", "wis_mod", "cha_mod")
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12);
+    `, 
+    [user.id, characterName, campaignName, raceId, classId, 
+    scoreValues[0], scoreValues[1], scoreValues[2], 
+    scoreValues[3], scoreValues[4], scoreValues[5], hitPointMax,
+    abilityMods[0], abilityMods[1], abilityMods[2], 
+    abilityMods[3], abilityMods[4], abilityMods[5]]);
+
+    await db.query('COMMIT');
+    res.sendStatus(201);
+
+  } catch (error) {
+    await db.query('ROLLBACK');
+    console.log(`Error in POST:`, error);
+    res.sendStatus(500);
+  } finally {
+    db.release();
+  }
 });
 
 

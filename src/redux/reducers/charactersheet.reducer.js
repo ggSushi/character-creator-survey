@@ -102,8 +102,7 @@ const charClass = (state = '', action) => {
   }
 }
 
-const abilityScores = (state = {
-  }, action) => {
+const abilityScores = (state = {}, action) => {
   switch (action.type) {
     case 'SET_ABILITY_SCORES':
       return action.payload;
@@ -156,6 +155,18 @@ const charRace = (state = '', action) => {
   }
 }
 
+// This reducer will store all user inputs to get POSTed to DB
+const allUserInputs = (state = {}, action) => {
+  switch (action.type) {
+    case 'SAVE_EVERYTHING':
+      return action.payload;
+    case 'CLEAR_FORM':
+      return {};
+    default:
+      return state;
+  }
+}
+
 
 //* This is the combineReducer that gets exported
 const charReducers = combineReducers({
@@ -173,6 +184,7 @@ const charReducers = combineReducers({
   skillBonus,
   charRace,
   abilityMods,
+  allUserInputs
 
 });
 

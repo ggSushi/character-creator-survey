@@ -4,9 +4,12 @@ import {useState, useEffect} from 'react';
 import axios from 'axios';
 
 function SurveyReview() {
+  const allUserInputs = useSelector(store => store.charReducers.allUserInputs);
   const history = useHistory();
   const dispatch = useDispatch();
   const user = useSelector(store => store.user);
+  //* It is possible to send the entirety of the combineReducers. 
+  //e.g. const allTheThings = useSelector(store => store.charReducers);
   const abilityScores = useSelector(store => store.charReducers.abilityScores);
   const abilityMods = useSelector(store => store.charReducers.abilityMods);
   const characterName = useSelector(store => store.charReducers.characterName);
@@ -19,6 +22,24 @@ function SurveyReview() {
   const [classId, setClassId] = useState(0);
   const hitPointMax = hitPointBase + abilityMods[2];
 
+  const submitEverything = () =>{
+    dispatch({
+      type: 'SAVE_EVERYTHING', 
+      payload: {
+        abilityScores,
+        abilityMods,
+        characterName,
+        campaignName,
+        charRace,
+        charClass,
+        skillBonus,
+        raceId,
+        classId,
+        hitPointMax,
+        user
+      }
+    });
+  }
   // GET Request for race info
   const getRaceIdDb = () => {
     axios.get(`/api/characters/all-race/${charRace}`).then((response) => {
@@ -28,7 +49,7 @@ function SurveyReview() {
       console.log(`Error in axios.get race_id: ${error}`);
       alert(`eck.`);
     })
-  }
+  } // end getRaceIdDb
 
   // GET Request for class info
   const getClassIdDb = () => {
@@ -40,20 +61,22 @@ function SurveyReview() {
       console.log(`Error in axios.get class_id: ${error}`);
       alert(`uck.`);
     })
-  }
+  } // end getClassIdDb
 
   useEffect(() => {
     getRaceIdDb();
     getClassIdDb();
+    calculateMods();
+    submitEverything();
   }, [])
 
   //* This code block will determine each score's modifier value
   const calculateMods = () => {
     // Object.values(object) will take the object key values and put them in an array.
-    const abilities = Object.values(abilityScores)
+    const scoreValues = Object.values(abilityScores)
     let modsArray = [];
-    console.log(abilities)
-    for (let score of abilities) {
+    console.log(scoreValues)
+    for (let score of scoreValues) {
       if (score === 1) {
         modsArray.push(-5)
       } else if (score === 2 || score === 3) {
@@ -91,8 +114,9 @@ function SurveyReview() {
     history.push('/survey-page-1')
   } // end restartSurvey
 
-
   //TODO: Write POST Request
+
+
 
   return (
     <>
@@ -117,7 +141,7 @@ function SurveyReview() {
         <br />
         Charisma Score: {abilityScores.cha_score}
       </div>
-      <button onClick={calculateMods} >calculate mods test</button>
+      <button onClick={submitEverything} >submitEverything test</button>
       <button onClick={restartSurvey} >Restart Survey</button>
     </>
   )
