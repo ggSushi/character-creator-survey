@@ -47,7 +47,6 @@ function CharacterListPage() {
           <CharacterItem 
             key={character.id}
             character={character}
-            getCharacterList={getCharacterList}
             deleteChar={deleteChar}
           />
         ))

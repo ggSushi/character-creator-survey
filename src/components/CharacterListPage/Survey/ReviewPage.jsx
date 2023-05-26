@@ -22,25 +22,6 @@ function SurveyReview() {
   const [classId, setClassId] = useState(0);
   const hitPointMax = hitPointBase + abilityMods[2];
 
-  const saveEverything = () =>{
-    dispatch({
-      type: 'SAVE_EVERYTHING', 
-      payload: {
-        abilityScores,
-        abilityMods,
-        characterName,
-        campaignName,
-        charRace,
-        charClass,
-        skillBonus,
-        raceId,
-        classId,
-        hitPointMax,
-        user
-      }
-    });
-  }
-
   // GET Request for race info
   const getRaceIdDb = () => {
     axios.get(`/api/characters/all-race/${charRace}`).then((response) => {

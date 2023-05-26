@@ -85,9 +85,6 @@ function SkillsAndSaves({ classInfo }) {
     skill.split(' ').filter(skill => skill !== "null").join(', ')
   ))
 
-  console.log(skillArray)
-  console.log(charSkills)
-
 
 
   return (

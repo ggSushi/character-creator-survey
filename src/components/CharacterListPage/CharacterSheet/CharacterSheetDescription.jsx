@@ -7,7 +7,6 @@ function CharacterSheetDescription() {
   const charId = useSelector(store => store.charReducers.characterId);
 
   const getCharInfo = () => {
-    console.log(`charId stats page`,charId)
     dispatch({ type: 'FETCH_CHAR_INFO', payload: charId})
   }
 

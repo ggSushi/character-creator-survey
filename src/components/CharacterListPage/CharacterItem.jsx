@@ -1,8 +1,8 @@
-import {useDispatch, useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 import axios from 'axios';
 
-function CharacterItem({character, deleteChar, getCharacterList}) {
+function CharacterItem({character, deleteChar}) {
   const history = useHistory();
   const dispatch = useDispatch();
 
