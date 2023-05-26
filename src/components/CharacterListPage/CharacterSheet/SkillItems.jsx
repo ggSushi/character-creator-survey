@@ -1,5 +1,4 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+
 
 function SkillItems({ allSkills, info }) {
   const strSkills = allSkills.filter(skill => skill.type === 'Strength');
@@ -10,7 +9,7 @@ function SkillItems({ allSkills, info }) {
   
 
   return (
-    <>
+    <div key={info.id}>
       <div className="str-skills-div">
         <ul>
           {
@@ -29,7 +28,7 @@ function SkillItems({ allSkills, info }) {
           }
         </ul>
       </div>
-      <div>
+      <div className="int-skills-div">
         <ul>
           {
             intSkills.map(skill => (
@@ -38,7 +37,7 @@ function SkillItems({ allSkills, info }) {
           }
         </ul>
       </div>
-      <div>
+      <div className="wis-skills-div">
         <ul>
           {
             wisSkills.map(skill => (
@@ -47,7 +46,7 @@ function SkillItems({ allSkills, info }) {
           }
         </ul>
       </div>
-      <div>
+      <div className="cha-skills-div">
         <ul>
           {
             chaSkills.map(skill => (
@@ -56,7 +55,7 @@ function SkillItems({ allSkills, info }) {
           }
         </ul>
       </div>
-    </>
+    </div>
   )
 }
 

@@ -1,7 +1,8 @@
 import SkillItems from './SkillItems.jsx';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
 
-function SkillsAndSaves({classInfo}) {
+function SkillsAndSaves({ classInfo }) {
   const charInfo = useSelector(store => store.charReducers.characterInfo);
   // array of all skills
   const allSkills = [
@@ -44,7 +45,7 @@ function SkillsAndSaves({classInfo}) {
     {
       name: 'Insight',
       type: 'Wisdom'
-    },    {
+    }, {
       name: 'Medicine',
       type: 'Wisdom'
     },
@@ -74,30 +75,31 @@ function SkillsAndSaves({classInfo}) {
     }
   ] // end all skills
 
-  let charSkills = []
-  const concatSkills = () => {
-    charInfo.map(char => charSkills.push(char.skill_1, char.skill_2, char.skill_3, char.skill_4, char.skill_5, char.skill_6))
-  }
-  console.log(charSkills)
+  // This code pulls specifically the skill proficiencies of the character and returns it as a string inside of an array.
+  let charSkills = charInfo.map(function (element) {
+    return `${element.skill_1} ${element.skill_2} ${element.skill_3} ${element.skill_4} ${element.skill_5} ${element.skill_6}`
+  })
+  // This code separates all the words into their own separate string values inside of the array.
+  let arraySkill = charSkills[0].split(' ')
+  // This code will filter out any values that are 'null'
+  arraySkill.filter(skill => skill != 'null')
+  // This code filters out the 'null's, but also rejoins them all into a string.
+  let skillProfs = arraySkill.filter(skill => skill != 'null').join(', ')
 
   return (
     <>
       <b>Skill Proficiencies (+ Prof. Bonus):</b>
-      <br/>
-      {
-        charInfo.map(skill => (
-          <i>{skill.skill_1}, {skill.skill_2}, {skill.skill_3}, {skill.skill_4}, {skill.skill_5}, {skill.skill_6}</i>
-        ))
-      }
+      <br />
+        {skillProfs}
       <div>
         {
           classInfo.map(info => (
             <div key={info.id}>
               <>
-              <b>Saving Throws (+ Prof. Bonus):</b> {info.save_prof_1}, {info.save_prof_2}
+                <b>Saving Throws (+ Prof. Bonus):</b> {info.save_prof_1}, {info.save_prof_2}
               </>
               <div>
-                <SkillItems allSkills={allSkills} info={info}/>
+                <SkillItems key={info.id} allSkills={allSkills} info={info} />
               </div>
             </div>
           ))
