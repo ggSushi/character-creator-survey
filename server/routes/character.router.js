@@ -98,23 +98,14 @@ router.get('/spellcasting/:id', (req, res) => {
 //* Class-info@id GET Request
 router.get('/class-info/:id', (req, res) => {
   const queryText = `
-    Select "classes"."name" as "class_name", 
-    "class_feats"."id" as "class_feat_id",
-    "class_feats"."name" as "class_feat_name",
-    "class_feats"."description" as "class_feat_desc",
-    "classes"."hit_dice", "classes"."hit_point_base",
-    "classes"."skill_prof_1", "classes"."skill_prof_2",
-    "classes"."skill_prof_3", "classes"."skill_prof_4",
-    "classes"."save_prof_1", "classes"."save_prof_2",
-    "classes"."armor_prof", "classes"."tool_prof",
-    "classes"."tool_prof", "classes"."weapon_prof", "classes"."equipment"
-    FROM "classes"
-    JOIN "class_feats" 
-    ON "class_feats"."id" = "classes"."feat_id_1"
-    OR "class_feats"."id" = "classes"."feat_id_2"
-    OR "class_feats"."id" = "classes"."feat_id_3"
-    JOIN "character" ON "character"."class_id" = "classes"."id"
-    WHERE "character"."id" = $1; `;
+  Select "classes"."name" as "class_name", 
+  "classes"."hit_dice", "classes"."hit_point_base",
+  "classes"."save_prof_1", "classes"."save_prof_2",
+  "classes"."armor_prof", "classes"."tool_prof",
+  "classes"."tool_prof", "classes"."weapon_prof", "classes"."equipment"
+  FROM "classes"
+  JOIN "character" ON "character"."class_id" = "classes"."id"
+  WHERE "character"."id" = $1`;
   pool.query(queryText, [req.params.id])
     .then((result) => {
       res.send(result.rows);
@@ -208,14 +199,17 @@ router.post('/', async (req, res) => {
     INSERT INTO "character" ("user_id", "name", "campaign", 
     "race_id", "class_id", "str_score", "dex_score", "con_score", 
     "int_score", "wis_score", "cha_score", "hit_point_max",
-    "str_mod", "dex_mod", "con_mod", "int_mod", "wis_mod", "cha_mod")
-    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18) RETURNING "id";
+    "str_mod", "dex_mod", "con_mod", "int_mod", "wis_mod", "cha_mod",
+    "skill_1", "skill_2", "skill_3", "skill_4", "skill_5", "skill_6")
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18 , $19, $20, $21, $22, $23, $24) RETURNING "id";
     `, 
     [user.id, characterName, campaignName, raceId, classId, 
     scoreValues[0], scoreValues[1], scoreValues[2], 
     scoreValues[3], scoreValues[4], scoreValues[5], hitPointMax,
     abilityMods[0], abilityMods[1], abilityMods[2], 
-    abilityMods[3], abilityMods[4], abilityMods[5]]);
+    abilityMods[3], abilityMods[4], abilityMods[5],
+    skillBonus[0], skillBonus[1], skillBonus[2], skillBonus[3], skillBonus[4], skillBonus[5]
+    ]);
     console.log(`charresbby`, charInsertResults.rows)
     const charId = charInsertResults.rows
 

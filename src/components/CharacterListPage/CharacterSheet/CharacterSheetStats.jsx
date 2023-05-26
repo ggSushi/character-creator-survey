@@ -57,8 +57,9 @@ function CharacterSheetStats() {
                 <b>Hit Points:</b> {info.hit_point_max}
                 <br />
                 <b>Proficiency Bonus: +{info.proficiency_bonus}</b>
+                <AbilityScores info={info}/>
               </div>
-              <AbilityScores info={info}/>
+              
             </div>
           ))
         }
