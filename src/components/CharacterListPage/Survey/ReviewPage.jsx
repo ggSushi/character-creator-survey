@@ -136,6 +136,7 @@ function SurveyReview() {
       console.log(`returnId`, returnId)
       dispatch({type: 'SET_CHARACTER_ID', payload: returnId[0].id});
       dispatch({ type: 'FETCH_CHAR_INFO', payload: returnId[0].id});
+      dispatch({type: 'CLEAR_FORM'})
       history.push('/character-sheet-stats')
     }).catch((error) => {
       alert(`Error in POST: ${error}`);

@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 
 function SkillsAndSaves({ classInfo }) {
   const charInfo = useSelector(store => store.charReducers.characterInfo);
+
   // array of all skills
   const allSkills = [
     {
@@ -79,31 +80,38 @@ function SkillsAndSaves({ classInfo }) {
   let charSkills = charInfo.map(function (element) {
     return `${element.skill_1} ${element.skill_2} ${element.skill_3} ${element.skill_4} ${element.skill_5} ${element.skill_6}`
   })
-  // This code separates all the words into their own separate string values inside of the array.
-  let arraySkill = charSkills[0].split(' ')
-  // This code will filter out any values that are 'null'
-  arraySkill.filter(skill => skill != 'null')
-  // This code filters out the 'null's, but also rejoins them all into a string.
-  let skillProfs = arraySkill.filter(skill => skill != 'null').join(', ')
+
+  let skillArray = charSkills.map(skill => (
+    skill.split(' ').filter(skill => skill !== "null").join(', ')
+  ))
+
+  console.log(skillArray)
+  console.log(charSkills)
+
+
 
   return (
     <>
-      <b>Skill Proficiencies (+ Prof. Bonus):</b>
-      <br />
-        {skillProfs}
+
       <div>
         {
           classInfo.map(info => (
             <div key={info.id}>
-              <>
-                <b>Saving Throws (+ Prof. Bonus):</b> {info.save_prof_1}, {info.save_prof_2}
-              </>
               <div>
                 <SkillItems key={info.id} allSkills={allSkills} info={info} />
               </div>
+              <div className="saves-div">
+                <b>Saving Throws (+ Prof. Bonus):</b> {info.save_prof_1}, {info.save_prof_2}
+              </div>
+
             </div>
           ))
         }
+        <div className="skill-prof-dom">
+        <b>Skill Proficiencies (+ Prof. Bonus):</b>
+        <br />
+        {skillArray}
+        </div>
       </div>
     </>
   )

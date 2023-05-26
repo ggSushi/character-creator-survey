@@ -9,8 +9,9 @@ function SkillItems({ allSkills, info }) {
   
 
   return (
-    <div key={info.id}>
+    <div id="all-skills-div" key={info.id}>
       <div className="str-skills-div">
+        <u>STR</u>
         <ul>
           {
             strSkills.map(skill => (
@@ -20,6 +21,7 @@ function SkillItems({ allSkills, info }) {
         </ul>
       </div>
       <div className="dex-skills-div">
+        <u>DEX</u>
         <ul>
           {
             dexSkills.map(skill => (
@@ -29,6 +31,7 @@ function SkillItems({ allSkills, info }) {
         </ul>
       </div>
       <div className="int-skills-div">
+        <u>INT</u>
         <ul>
           {
             intSkills.map(skill => (
@@ -38,6 +41,7 @@ function SkillItems({ allSkills, info }) {
         </ul>
       </div>
       <div className="wis-skills-div">
+        <u>WIS</u>
         <ul>
           {
             wisSkills.map(skill => (
@@ -47,6 +51,7 @@ function SkillItems({ allSkills, info }) {
         </ul>
       </div>
       <div className="cha-skills-div">
+        <u>CHA</u>
         <ul>
           {
             chaSkills.map(skill => (

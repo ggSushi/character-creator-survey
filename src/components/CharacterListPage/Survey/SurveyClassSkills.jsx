@@ -247,7 +247,7 @@ function SurveyClassSkills() {
     },
     {
       id: 10,
-      name: `Sleight of Hand`,
+      name: `Sleight-of-Hand`,
       description: `Quick and dextrous hands to secretly take or manipulate things.`
     },
     {
