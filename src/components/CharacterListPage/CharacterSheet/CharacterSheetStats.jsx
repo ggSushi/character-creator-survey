@@ -41,6 +41,10 @@ function CharacterSheetStats() {
     getClassInfo();
   }, [])
 
+  let languageNames = languages.map(function (element) {
+    return `${element.name}`
+  })
+  let langArray = languageNames.join(', ')
 
   return (
     <>
@@ -58,7 +62,6 @@ function CharacterSheetStats() {
                 <br />
                 <b>Proficiency Bonus: +{info.proficiency_bonus}</b>
                 <br />
-                <b>Ability Modifiers:</b>
                 <AbilityScores info={info}/>
               </div>
               
@@ -66,12 +69,11 @@ function CharacterSheetStats() {
           ))
         }
         <SkillsAndSaves classInfo={classInfo}/>
-
+        <b>Languages:</b> {langArray}
       </div>
 
 
       {/* {JSON.stringify(characterInfo)} */}
-      {/* {JSON.stringify(languages)} */}
       {JSON.stringify(classInfo)}
       {/* {JSON.stringify(raceInfo)} */}
 

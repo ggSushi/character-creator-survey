@@ -5,6 +5,7 @@ function AbilityScores({info}) {
 
   return (
     <>
+    <b><u>Ability Modifiers:</u></b>
       <div className="abilities">
         <div className="strength">
           Str: {info.str_score}

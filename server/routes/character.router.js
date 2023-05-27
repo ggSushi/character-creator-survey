@@ -129,13 +129,11 @@ router.get('/all-class/:class', (req,res) => {
 //* Race Languages GET Request
 router.get('/languages/:id', (req, res) => {
   const queryText = `
-    Select "languages"."name" AS "language", "races"."id" AS "race_id"
-    FROM "races"
-    JOIN "languages"
-    ON "languages"."id" = "races"."language_id_1"
-    OR "languages"."id" = "races"."language_id_2"
-    JOIN "character" ON "character"."race_id" = "races"."id"
-    WHERE "character"."id" = $1;`;
+  Select "languages".* from "languages"
+  JOIN "races" ON "languages"."id" = "races"."language_id_1"
+  OR "languages"."id" = "races"."language_id_2"
+  JOIN "character" ON "character"."race_id" = "races"."id"
+  WHERE "character"."id" = $1;`;
   pool.query(queryText, [req.params.id])
     .then((result) => {
       res.send(result.rows);

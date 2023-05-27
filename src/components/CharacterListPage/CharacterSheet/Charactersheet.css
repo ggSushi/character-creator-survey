@@ -22,8 +22,10 @@ b,
 
 li {
   list-style-type: none;
-  
   margin-left: -40px;
   padding-right: 20px;
 }
 
+.abilities {
+  margin-bottom: 10px;
+}
