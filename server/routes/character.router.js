@@ -225,6 +225,14 @@ router.post('/', async (req, res) => {
 
 
 // TODO PUT Requests
+router.put('/:id', (req, res) => {
+  let queryText = `
+    UPDATE "character" set "description" = $1, 
+    "alignment" = $2, 
+    "ideals" = $3, 
+    "flaws" = $4 where "id" = $5;`;
+  pool.query(queryText, )
+})
 
 
 
