@@ -15,7 +15,7 @@ function SkillItems({ allSkills, info }) {
         <ul>
           {
             strSkills.map(skill => (
-              <li key={skill.id}>{skill.name}</li>
+              <li className="skill-list" key={skill.id}>{skill.name}</li>
             ))
           }
         </ul>
@@ -25,7 +25,7 @@ function SkillItems({ allSkills, info }) {
         <ul>
           {
             dexSkills.map(skill => (
-              <li key={skill.id}>{skill.name}</li>
+              <li className="skill-list" key={skill.id}>{skill.name}</li>
             ))
           }
         </ul>
@@ -35,7 +35,7 @@ function SkillItems({ allSkills, info }) {
         <ul>
           {
             intSkills.map(skill => (
-              <li key={skill.id}>{skill.name}</li>
+              <li className="skill-list" key={skill.id}>{skill.name}</li>
             ))
           }
         </ul>
@@ -45,7 +45,7 @@ function SkillItems({ allSkills, info }) {
         <ul>
           {
             wisSkills.map(skill => (
-              <li key={skill.id}>{skill.name}</li>
+              <li className="skill-list" key={skill.id}>{skill.name}</li>
             ))
           }
         </ul>
@@ -55,7 +55,7 @@ function SkillItems({ allSkills, info }) {
         <ul>
           {
             chaSkills.map(skill => (
-              <li key={skill.id}>{skill.name}</li>
+              <li className="skill-list" key={skill.id}>{skill.name}</li>
             ))
           }
         </ul>

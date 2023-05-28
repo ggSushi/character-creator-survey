@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
+import CharNav from './CharacterNav.jsx'
 
 function CharacterSheetDescription() {
   const dispatch = useDispatch();
@@ -17,6 +18,7 @@ function CharacterSheetDescription() {
 
   return(
     <>
+    <CharNav />
     Describe yoself
     {JSON.stringify(characterInfo)}
     </>

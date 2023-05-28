@@ -20,7 +20,7 @@ b,
   font-size: 12px;
 }
 
-li {
+.skill-list {
   list-style-type: none;
   margin-left: -40px;
   padding-right: 20px;
@@ -29,3 +29,28 @@ li {
 .abilities {
   margin-bottom: 10px;
 }
+
+.char-nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #c6ae7d;
+}
+
+.char-link {
+  float: left;
+}
+
+.char-link a {
+  display: block;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.char-link a:hover {
+  background-color: #796234;
+}
+

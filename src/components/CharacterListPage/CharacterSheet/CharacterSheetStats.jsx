@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import AbilityScores from './AbilityScores.jsx';
 import SkillsAndSaves from './SkillsAndSaves.jsx';
 import './Charactersheet.css';
-
+import CharNav from './CharacterNav.jsx'
 
 function CharacterSheetStats() {
   const dispatch = useDispatch();
@@ -48,6 +48,7 @@ function CharacterSheetStats() {
 
   return (
     <>
+    <CharNav />
       <div className="char-info-basic">
         {
           characterInfo.map(info => (
