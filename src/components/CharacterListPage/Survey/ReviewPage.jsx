@@ -4,7 +4,6 @@ import {useState, useEffect} from 'react';
 import axios from 'axios';
 
 function SurveyReview() {
-  const allUserInputs = useSelector(store => store.charReducers.allUserInputs);
   const history = useHistory();
   const dispatch = useDispatch();
   const user = useSelector(store => store.user);
@@ -104,8 +103,6 @@ function SurveyReview() {
       abilityMods,
       characterName,
       campaignName,
-      charRace,
-      charClass,
       skillBonus,
       raceId,
       classId,

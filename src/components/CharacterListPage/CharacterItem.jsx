@@ -15,7 +15,7 @@ function CharacterItem({character, deleteChar}) {
   return(
     <div>
       <div onClick={() => routeCharSheet()}>
-        <b><u>{character.name}</u></b> {character.id}
+        <b><u>{character.name}</u></b>
         <br/>
         <sup>{character.race_name} {character.class_name}</sup>
         <br />

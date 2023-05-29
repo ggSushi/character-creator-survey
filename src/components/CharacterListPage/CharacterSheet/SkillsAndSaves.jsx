@@ -77,14 +77,13 @@ function SkillsAndSaves({ classInfo }) {
   ] // end all skills
 
   // This code pulls specifically the skill proficiencies of the character and returns it as a string inside of an array.
-  let charSkills = charInfo.map(function (element) {
+  let charSkills = charInfo.map(element => {
     return `${element.skill_1} ${element.skill_2} ${element.skill_3} ${element.skill_4} ${element.skill_5} ${element.skill_6}`
   })
 
   let skillArray = charSkills.map(skill => (
     skill.split(' ').filter(skill => skill !== "null").join(', ')
   ))
-
   
   return (
     <>

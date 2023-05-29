@@ -183,8 +183,6 @@ router.post('/', async (req, res) => {
       abilityMods,
       characterName,
       campaignName,
-      charRace,
-      charClass,
       skillBonus,
       raceId,
       classId,
