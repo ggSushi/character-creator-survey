@@ -99,6 +99,7 @@ router.get('/spellcasting/:id', (req, res) => {
 router.get('/class-info/:id', (req, res) => {
   const queryText = `
   Select "classes"."name" as "class_name", 
+  "classes"."id" as "class_id",
   "classes"."hit_dice", "classes"."hit_point_base",
   "classes"."save_prof_1", "classes"."save_prof_2",
   "classes"."armor_prof", "classes"."tool_prof",

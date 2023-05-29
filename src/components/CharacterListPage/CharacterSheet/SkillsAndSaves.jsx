@@ -85,17 +85,16 @@ function SkillsAndSaves({ classInfo }) {
     skill.split(' ').filter(skill => skill !== "null").join(', ')
   ))
 
-
-
+  
   return (
     <>
 
       <div>
         {
           classInfo.map(info => (
-            <div key={info.id}>
+            <div key={info.class_id}>
               <div>
-                <SkillItems key={info.id} allSkills={allSkills} info={info} />
+                <SkillItems key={info.class_id} allSkills={allSkills} info={info} />
               </div>
               <div className="saves-div">
                 <b>Saving Throws (+ Prof. Bonus):</b> {info.save_prof_1}, {info.save_prof_2}

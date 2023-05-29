@@ -9,7 +9,7 @@ function SkillItems({ allSkills, info }) {
   
 
   return (
-    <div id="all-skills-div" key={info.id}>
+    <div id="all-skills-div" key={info.class_id}>
       <div className="str-skills-div">
         <u>STR</u>
         <ul>
