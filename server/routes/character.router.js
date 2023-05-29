@@ -238,7 +238,7 @@ router.put('/character-info/:id', (req, res) => {
   pool.query(queryText, [putInfo.charDesc, putInfo.align, putInfo.ideals, putInfo.flaws, req.params.id])
     .then((result) => {
       //* The result variable above is going to be the RETURNING information from the query request.
-      res.send(result.rows);
+      res.send(result.rows[0]);
     }).catch((error) => {
       res.sendStatus(500);
     })

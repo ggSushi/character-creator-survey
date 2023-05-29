@@ -1,9 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
+import {useHistory} from 'react-router-dom';
 import CharNav from './CharacterNav.jsx'
 import axios from 'axios';
 
 function CharacterSheetDescription() {
+  const history = useHistory();
   const dispatch = useDispatch();
   const characterInfo = useSelector(store => store.charReducers.characterInfo);
   const charId = useSelector(store => store.charReducers.characterId);
@@ -49,8 +51,15 @@ function CharacterSheetDescription() {
       ideals,
       flaws
     }).then((response) => {
+      let resData = response.data;
+      setCharDesc(resData.description);
+      setAlign(resData.alignment);
+      setIdeals(resData.ideals);
+      setFlaws(resData.flaws);
+      console.log(`resData`, resData.description)
       setEditStatus(!editStatus);
-      console.log(`response.data`, response.data)
+      // TODO: I want to make this change live on the DOM anda ccurately display it.
+      history.push('/character-sheet-stats');
     }).catch((error) => {
       alert(`Error in PUT: ${error}`);
     })
