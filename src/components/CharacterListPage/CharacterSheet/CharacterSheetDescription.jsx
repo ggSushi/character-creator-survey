@@ -50,6 +50,7 @@ function CharacterSheetDescription() {
       flaws
     }).then((response) => {
       setEditStatus(!editStatus);
+      console.log(`response.data`, response.data)
     }).catch((error) => {
       alert(`Error in PUT: ${error}`);
     })

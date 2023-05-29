@@ -233,10 +233,12 @@ router.put('/character-info/:id', (req, res) => {
     UPDATE "character" set "description" = $1, 
     "alignment" = $2, 
     "ideals" = $3, 
-    "flaws" = $4 where "id" = $5;`;
+    "flaws" = $4 where "id" = $5 RETURNING "description", "alignment", "ideals", "flaws";`;
+  
   pool.query(queryText, [putInfo.charDesc, putInfo.align, putInfo.ideals, putInfo.flaws, req.params.id])
     .then((result) => {
-      res.sendStatus(200);
+      //* The result variable above is going to be the RETURNING information from the query request.
+      res.send(result.rows);
     }).catch((error) => {
       res.sendStatus(500);
     })
