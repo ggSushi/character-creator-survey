@@ -226,13 +226,20 @@ router.post('/', async (req, res) => {
 
 
 // TODO PUT Requests
-router.put('/:id', (req, res) => {
+router.put('/character-info/:id', (req, res) => {
+  console.log(`in PUT`)
+  let putInfo = req.body
   let queryText = `
     UPDATE "character" set "description" = $1, 
     "alignment" = $2, 
     "ideals" = $3, 
     "flaws" = $4 where "id" = $5;`;
-  pool.query(queryText, )
+  pool.query(queryText, [putInfo.charDesc, putInfo.align, putInfo.ideals, putInfo.flaws, req.params.id])
+    .then((result) => {
+      res.sendStatus(200);
+    }).catch((error) => {
+      res.sendStatus(500);
+    })
 })
 
 
