@@ -17,7 +17,7 @@
 b,
 .saves-div,
 .skill-prof-dom {
-  font-size: 12px;
+  font-size: 15px;
 }
 
 .skill-list {
@@ -54,3 +54,6 @@ b,
   background-color: #796234;
 }
 
+#char-item-div {
+  font-size: 20px;
+}

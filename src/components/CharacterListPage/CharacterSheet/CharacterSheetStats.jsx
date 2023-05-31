@@ -75,7 +75,7 @@ function CharacterSheetStats() {
 
 
       {/* {JSON.stringify(characterInfo)} */}
-      {JSON.stringify(classInfo)}
+      {/* {JSON.stringify(classInfo)} */}
       {/* {JSON.stringify(raceInfo)} */}
 
     </>
