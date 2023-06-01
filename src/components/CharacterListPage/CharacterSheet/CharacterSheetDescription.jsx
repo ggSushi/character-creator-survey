@@ -71,7 +71,7 @@ function CharacterSheetDescription() {
       <button onClick={handleSubmit} >Save</button>
       {
         characterInfo.map(info => (
-          <div>
+          <div key={info.class_id}>
             <b><u>Description:</u></b>
             <br />
             {

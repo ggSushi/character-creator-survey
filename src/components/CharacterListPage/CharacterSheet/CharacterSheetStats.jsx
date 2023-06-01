@@ -9,7 +9,8 @@ function CharacterSheetStats() {
   const dispatch = useDispatch();
   const characterInfo = useSelector(store => store.charReducers.characterInfo);
   const classInfo = useSelector(store => store.charReducers.classInfo);
-  const raceInfo = useSelector(store => store.charReducers.raceInfo);
+  //! Temporarily disabled until needed - gd
+  // const raceInfo = useSelector(store => store.charReducers.raceInfo);
   const languages = useSelector(store => store.charReducers.languages);
   const charId = useSelector(store => store.charReducers.characterId);
 
@@ -52,8 +53,8 @@ function CharacterSheetStats() {
       <div className="char-info-basic">
         {
           characterInfo.map(info => (
-            <div>
-              <div key={info.id}>
+            <div key={info.class_id}>
+              <div>
                 <h2 className="name-header"><u>{info.name}</u></h2>
                 <b><i>{info.race_name} {info.class_name}</i></b> Lv 1
                 <br />

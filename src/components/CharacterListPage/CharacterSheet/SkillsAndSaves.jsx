@@ -8,69 +8,87 @@ function SkillsAndSaves({ classInfo }) {
   // array of all skills
   const allSkills = [
     {
+      id: 1,
       name: 'Athletics',
       type: 'Strength'
     },
     {
+      id: 2,
       name: 'Acrobatics',
       type: 'Dexterity'
     },
     {
+      id: 3,
       name: 'Sleight of Hand',
       type: 'Dexterity'
     },
     {
+      id: 4,
       name: 'Stealth',
       type: 'Dexterity'
     },
     {
+      id: 5,
       name: 'Arcana',
       type: 'Intelligence'
     },
-    {
+    { 
+      id: 6,
       name: 'History',
       type: 'Intelligence'
     },
     {
+      id: 7,
       name: 'Nature',
       type: 'Intelligence'
     },
     {
+      id: 8,
       name: 'Religion',
       type: 'Intelligence'
     },
     {
+      id: 9,
       name: 'Animal Handling',
       type: 'Wisdom'
     },
     {
+      id: 10,
       name: 'Insight',
       type: 'Wisdom'
-    }, {
+    }, 
+    {
+      id: 11,
       name: 'Medicine',
       type: 'Wisdom'
     },
     {
+      id: 12,
       name: 'Perception',
       type: 'Wisdom'
     },
     {
+      id: 13,
       name: 'Survival',
       type: 'Wisdom'
     },
     {
+      id: 14,
       name: 'Deception',
       type: 'Charisma'
     },
     {
+      id: 15,
       name: 'Intimidation',
       type: 'Charisma'
     },
     {
+      id: 16,
       name: 'Performance',
       type: 'Charisma'
     },
     {
+      id: 17,
       name: 'Persuasion',
       type: 'Charisma'
     }
