@@ -10,7 +10,7 @@ function CharacterSheetStats() {
   const characterInfo = useSelector(store => store.charReducers.characterInfo);
   const classInfo = useSelector(store => store.charReducers.classInfo);
   //! Temporarily disabled until needed - gd
-  // const raceInfo = useSelector(store => store.charReducers.raceInfo);
+  const raceInfo = useSelector(store => store.charReducers.raceInfo);
   const languages = useSelector(store => store.charReducers.languages);
   const charId = useSelector(store => store.charReducers.characterId);
 
@@ -49,7 +49,7 @@ function CharacterSheetStats() {
 
   return (
     <>
-    <CharNav />
+      <CharNav />
       <div className="char-info-basic">
         {
           characterInfo.map(info => (
@@ -64,21 +64,19 @@ function CharacterSheetStats() {
                 <br />
                 <b>Proficiency Bonus: +{info.proficiency_bonus}</b>
                 <br />
-                <AbilityScores info={info}/>
+                <AbilityScores info={info} />
               </div>
-              
+
             </div>
           ))
         }
-        <SkillsAndSaves classInfo={classInfo}/>
+        <SkillsAndSaves classInfo={classInfo} />
         <b>Languages:</b> {langArray}
+
+        {JSON.stringify(characterInfo)}
+        {JSON.stringify(classInfo)}
+        {JSON.stringify(raceInfo)}
       </div>
-
-
-      {/* {JSON.stringify(characterInfo)} */}
-      {/* {JSON.stringify(classInfo)} */}
-      {/* {JSON.stringify(raceInfo)} */}
-
     </>
   )
 }
