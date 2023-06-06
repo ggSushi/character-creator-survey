@@ -1,6 +1,7 @@
 .name-header {
   text-align: center;
   margin-bottom: 8px;
+  margin-top: 8px;
 }
 
 .abilities {
@@ -26,8 +27,8 @@
 .intelligence,
 .wisdom,
 .charisma {
-  border: rgb(216, 203, 186) solid 2px;
-  border-radius: 5px;
+  border: #c6ae7d solid 2px;
+  border-radius: 0px 10px;
   padding-bottom: 3px;
   padding-right: 2px;
   padding-left: 2px;
@@ -92,5 +93,19 @@ b,
 }
 
 #char-item-div {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
   font-size: 20px;
+  border: #c6ae7d 2px solid;
+  border-radius: 0px 10px;
+  margin: 3px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
+
+#delete-btn {
+height: 20px;
+margin-bottom: 6px;
+}
+

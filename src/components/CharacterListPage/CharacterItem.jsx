@@ -13,15 +13,15 @@ function CharacterItem({character, deleteChar}) {
 
 
   return(
-    <div>
-      <div id="char-item-div" onClick={() => routeCharSheet()}>
+    <div id="char-item-div">
+      <div onClick={() => routeCharSheet()}>
         <b>{character.name}</b>
         <br/>
         <sup>{character.race_name} {character.class_name}</sup>
         <br />
         <i><sup>{character.campaign}</sup></i>
       </div>
-      <button onClick={() => deleteChar(character.id)}>Delete</button>
+      <button id="delete-btn" onClick={() => deleteChar(character.id)}>Delete</button>
     </div>
   )
 }
