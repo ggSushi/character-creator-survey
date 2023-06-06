@@ -6,16 +6,49 @@
 .abilities {
   display: flex;
   justify-content: space-around;
+  padding-top: 2px;
 }
 
 #all-skills-div {
   display: flex;
   justify-content: space-around;
   font-size: 12px;
+  padding-left: 17px;
 }
 
 .char-info-basic {
   overflow-x: hidden;
+}
+
+.strength,
+.dexterity,
+.constitution,
+.intelligence,
+.wisdom,
+.charisma {
+  border: rgb(216, 203, 186) solid 2px;
+  border-radius: 5px;
+  padding-bottom: 3px;
+  padding-right: 2px;
+  padding-left: 2px;
+}
+
+.top-info-div {
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 5px;
+}
+
+.skill-name {
+  padding: 10px;
+}
+
+.skill-ul {
+  margin-top: 2px;
+}
+
+.race-class-camp {
+  text-align: center;
 }
 
 b,

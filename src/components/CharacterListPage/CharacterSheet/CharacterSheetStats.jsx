@@ -56,14 +56,20 @@ function CharacterSheetStats() {
             <div key={info.class_id}>
               <div>
                 <h2 className="name-header"><u>{info.name}</u></h2>
-                <b><i>{info.race_name} {info.class_name}</i></b> Lv 1
-                <br />
-                <b>Campaign:</b> <i>{info.campaign}</i>
-                <br />
-                <b>Hit Points:</b> {info.hit_point_max}
-                <br />
-                <b>Proficiency Bonus: +{info.proficiency_bonus}</b>
-                <br />
+                <div className="race-class-camp">
+                  <b><i>{info.race_name} {info.class_name}</i></b> Lv 1
+                  <br />
+                  <b>Campaign:</b> <i>{info.campaign}</i>
+                </div>
+                <hr />
+                <div className="top-info-div">
+                  <div className="hit-points-div">
+                    <b>Hit Points:</b> {info.hit_point_max}
+                  </div>
+                  <div className="prof-div">
+                    <b>Proficiency Bonus: +{info.proficiency_bonus}</b>
+                  </div>
+                </div>
                 <AbilityScores info={info} />
               </div>
 
@@ -73,9 +79,9 @@ function CharacterSheetStats() {
         <SkillsAndSaves classInfo={classInfo} />
         <b>Languages:</b> {langArray}
 
-        {JSON.stringify(characterInfo)}
+        {/* {JSON.stringify(characterInfo)}
         {JSON.stringify(classInfo)}
-        {JSON.stringify(raceInfo)}
+        {JSON.stringify(raceInfo)} */}
       </div>
     </>
   )

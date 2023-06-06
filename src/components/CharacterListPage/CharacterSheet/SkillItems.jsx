@@ -11,8 +11,8 @@ function SkillItems({ allSkills, info }) {
   return (
     <div id="all-skills-div">
       <div className="str-skills-div">
-        <u>STR</u>
-        <ul>
+        <u className="skill-name">STR</u>
+        <ul className="skill-ul">
           {
             strSkills.map(skill => (
               <li className="skill-list" key={skill.id}>{skill.name}</li>
@@ -21,8 +21,8 @@ function SkillItems({ allSkills, info }) {
         </ul>
       </div>
       <div className="dex-skills-div">
-        <u>DEX</u>
-        <ul>
+        <u className="skill-name">DEX</u>
+        <ul className="skill-ul">
           {
             dexSkills.map(skill => (
               <li className="skill-list" key={skill.id}>{skill.name}</li>
@@ -31,8 +31,8 @@ function SkillItems({ allSkills, info }) {
         </ul>
       </div>
       <div className="int-skills-div">
-        <u>INT</u>
-        <ul>
+        <u className="skill-name">INT</u>
+        <ul className="skill-ul">
           {
             intSkills.map(skill => (
               <li className="skill-list" key={skill.id}>{skill.name}</li>
@@ -41,8 +41,8 @@ function SkillItems({ allSkills, info }) {
         </ul>
       </div>
       <div className="wis-skills-div">
-        <u>WIS</u>
-        <ul>
+        <u className="skill-name">WIS</u>
+        <ul className="skill-ul">
           {
             wisSkills.map(skill => (
               <li className="skill-list" key={skill.id}>{skill.name}</li>
@@ -51,8 +51,8 @@ function SkillItems({ allSkills, info }) {
         </ul>
       </div>
       <div className="cha-skills-div">
-        <u>CHA</u>
-        <ul>
+        <u className="skill-name">CHA</u>
+        <ul className="skill-ul">
           {
             chaSkills.map(skill => (
               <li className="skill-list" key={skill.id}>{skill.name}</li>
