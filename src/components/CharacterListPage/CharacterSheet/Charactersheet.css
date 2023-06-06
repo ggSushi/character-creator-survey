@@ -50,6 +50,11 @@
   margin-right: 5px;
 }
 
+.save-div,
+.skill-prof-dom {
+  margin-bottom: 10px;
+}
+
 .skill-name {
   padding: 10px;
 }
@@ -63,7 +68,7 @@
 }
 
 b,
-.saves-div,
+.save-div,
 .skill-prof-dom {
   font-size: 15px;
 }

@@ -109,7 +109,7 @@ function SkillsAndSaves({ classInfo }) {
       <div>
         {
           classInfo.map(info => (
-            <div key={info.class_id}>
+            <div className="save-div" key={info.class_id}>
                 <SkillItems key={info.class_id} allSkills={allSkills} info={info} />
                 <b>Saving Throws (+ Prof. Bonus):</b> 
                 <br/>{info.save_prof_1}, {info.save_prof_2}
