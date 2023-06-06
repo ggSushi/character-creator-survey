@@ -8,7 +8,19 @@ import React from 'react';
 function InfoPage() {
   return (
     <div className="container">
-      <p>Info Page</p>
+      <h3>Technologies Used:</h3>
+      <p>
+        <ul>
+          <li>JavaScript</li>
+          <li>HTML & CSS</li>
+          <li>ReactJS, React Redux, Redux-Sagas</li>
+          <li>PostgreSQL</li>
+          <li>Axios</li>
+        </ul>
+      </p>
+      <p>
+        Github: <a href="https://github.com/ggSushi" >github.com/ggSushi</a>
+      </p>
     </div>
   );
 }
