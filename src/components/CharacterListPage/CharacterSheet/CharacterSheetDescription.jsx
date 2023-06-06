@@ -1,8 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-import {useHistory} from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import CharNav from './CharacterNav.jsx'
 import axios from 'axios';
+import "./Charactersheet.css"
 
 function CharacterSheetDescription() {
   const history = useHistory();
@@ -45,24 +46,24 @@ function CharacterSheetDescription() {
 
   const handleSubmit = () => {
     axios.put(`/api/characters/character-info/${charId}`,
-    {
-      charDesc,
-      align,
-      ideals,
-      flaws
-    }).then((response) => {
-      let resData = response.data;
-      setCharDesc(resData.description);
-      setAlign(resData.alignment);
-      setIdeals(resData.ideals);
-      setFlaws(resData.flaws);
-      console.log(`resData`, resData.description)
-      setEditStatus(!editStatus);
-      // TODO: I want to make this change live on the DOM anda ccurately display it.
-      history.push('/character-sheet-stats');
-    }).catch((error) => {
-      alert(`Error in PUT: ${error}`);
-    })
+      {
+        charDesc,
+        align,
+        ideals,
+        flaws
+      }).then((response) => {
+        let resData = response.data;
+        setCharDesc(resData.description);
+        setAlign(resData.alignment);
+        setIdeals(resData.ideals);
+        setFlaws(resData.flaws);
+        console.log(`resData`, resData.description)
+        setEditStatus(!editStatus);
+        // TODO: I want to make this change live on the DOM anda ccurately display it.
+        history.push('/character-sheet-stats');
+      }).catch((error) => {
+        alert(`Error in PUT: ${error}`);
+      })
   }
   return (
     <>
@@ -71,48 +72,54 @@ function CharacterSheetDescription() {
       <button onClick={handleSubmit} >Save</button>
       {
         characterInfo.map(info => (
-          <div key={info.class_id}>
-            <b><u>Description:</u></b>
+          <div className="desc-info" key={info.class_id}>
+            <div>
+              <b><u>Description:</u></b>
+              <br />
+              {
+                editStatus === false ? (
+                  <>{info.description}</>
+                ) : (
+                  <textarea rows="6" cols="40" value={charDesc} onChange={handleDescChange} />
+                )
+              }
+            </div>
             <br />
-            {
-              editStatus === false ? (
-                <>{info.description}</>
-              ) : (
-                <textarea rows="6" cols="40" value={charDesc} onChange={handleDescChange} />
-              )
-            }
+            <div>
+              <b><u>Alignment:</u></b>
+              <br />
+              {
+                editStatus === false ? (
+                  <>{info.alignment}</>
+                ) : (
+                  <input type="text" value={align} onChange={handleAlignChange} />
+                )
+              }
+            </div>
             <br />
-            <b><u>Alignment:</u></b>
+            <div>
+              <b><u>Ideals:</u></b>
+              <br />
+              {
+                editStatus === false ? (
+                  <>{info.ideals}</>
+                ) : (
+                  <input type="text" value={ideals} onChange={handleIdealsChange} />
+                )
+              }
+            </div>
             <br />
-            {
-              editStatus === false ? (
-                <>{info.alignment}</>
-              ) : (
-                <input type="text" value={align} onChange={handleAlignChange} />
-              )
-            }
-            <br />
-            <b><u>Ideals:</u></b>
-            <br />
-            {
-              editStatus === false ? (
-                <>{info.ideals}</>
-              ) : (
-                <input type="text" value={ideals} onChange={handleIdealsChange} />
-              )
-            }
-            <br />
-            <b><u>Flaws:</u></b>
-            <br />
-            {
-              editStatus === false ? (
-                <>{info.flaws}</>
-              ) : (
-                <input type="text" value={flaws} onChange={handleFlawsChange} />
-              )
-            }
-            <br />
-
+            <div>
+              <b><u>Flaws:</u></b>
+              <br />
+              {
+                editStatus === false ? (
+                  <>{info.flaws}</>
+                ) : (
+                  <input type="text" value={flaws} onChange={handleFlawsChange} />
+                )
+              }
+            </div>
           </div>
         ))
       }
