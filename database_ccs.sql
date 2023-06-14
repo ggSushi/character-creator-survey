@@ -176,7 +176,76 @@ VALUES ('Cleric', '1d8', 8, 'Wisdom', 'Charisma', 'Light/medium armor, shields',
 INSERT INTO "classes" ("name", "hit_dice", "hit_point_base", "save_prof_1", "save_prof_2", "armor_prof", "tool_prof", "weapon_prof", "equipment", "feat_id_1", "feat_id_2", "feat_id_3")
 VALUES ('Rogue', '1d8', 8, 'Dexterity', 'Intelligence', 'Light armor', 'Thieves Tools', 'Simple, hand crossbows, longswords, rapiers, shortswords', 9, 10, 11);
 
+-- Class Feats Table
+CREATE TABLE "class_feats" (
+	"id" Serial Primary Key,
+	"name" varchar NOT NULL,
+	"description" varchar NOT NULL
+);
 
+INSERT INTO "class_feats" ("name", "description")
+VALUES('Sorcerous Origin: Wild Magic', 'Wild Magic Surge
+Starting when you choose this origin at 1st level, your spellcasting can unleash surges of untamed magic. Once per turn, the DM can have you roll a d20 immediately after you cast a sorcerer spell of 1st level or higher. If you roll a 1, roll on the Wild Magic Surge table to create a magical effect. If that effect is a spell, it is too wild to be affected by your Metamagic, and if it normally requires concentration, it does not require concentration in this case; the spell lasts for its full duration.
+
+Tides of Chaos
+Starting at 1st level, you can manipulate the forces of chance and chaos to gain advantage on one attack roll, ability check, or saving throw. Once you do so, you must finish a long rest before you can use this feature again.
+
+Any time before you regain the use of this feature, the DM can have you roll on the Wild Magic Surge table immediately after you cast a sorcerer spell of 1st level or higher. You then regain the use of this feature.'),
+('Rage', 'In battle, you fight with primal ferocity. On your turn, you can enter a rage as a bonus action.
+
+While raging, you gain the following benefits if you are not wearing heavy armor:
+
+You have advantage on Strength checks and Strength saving throws.
+When you make a melee weapon attack using Strength, you gain a bonus to the damage roll that increases as you gain levels as a barbarian, as shown in the Rage Damage column of the Barbarian table.
+You have resistance to bludgeoning, piercing, and slashing damage.
+If you are able to cast spells, you cannot cast them or concentrate on them while raging.
+
+Your rage lasts for 1 minute. It ends early if you are knocked unconscious or if your turn ends and you have not attacked a hostile creature since your last turn or taken damage since then. You can also end your rage on your turn as a bonus action.
+
+Once you have raged the number of times shown for your barbarian level in the Rages column of the Barbarian table, you must finish a long rest before you can rage again.'),
+('Unarmored Defense', 'While you are not wearing any armor, your armor class equals 10 + your Dexterity modifier + your Constitution modifier. You can use a shield and still gain this benefit.'),
+('Divine Sense', 'The presence of strong evil registers on your senses like a noxious odor, and powerful good rings like heavenly music in your ears. As an action, you can open your awareness to detect such forces. Until the end of your next turn, you know the location of any celestial, fiend, or undead within 60 feet of you that is not behind total cover. You know the type (celestial, fiend, or undead) of any being whose presence you sense, but not its identity (the vampire Count Strahd von Zarovich, for instance). Within the same radius, you also detect the presence of any place or object that has been consecrated or desecrated, as with the Hallow spell.
+
+You can use this feature a number of times equal to 1 + your Charisma modifier. When you finish a long rest, you regain all expended uses.'),
+('Lay on Hands', 'Your blessed touch can heal wounds. You have a pool of healing power that replenishes when you take a long rest. With that pool, you can restore a total number of hit points equal to your paladin level x 5.
+
+As an action, you can touch a creature and draw power from the pool to restore a number of hit points to that creature, up to the maximum amount remaining in your pool.
+
+Alternatively, you can expend 5 hit points from your pool of healing to cure the target of one disease or neutralize one poison affecting it. You can cure multiple diseases and neutralize multiple poisons with a single use of Lay on Hands, expending hit points separately for each one.
+
+This feature has no effect on undead and constructs.'),
+('Favored Enemy', 'Beginning at 1st level, you have significant experience studying, tracking, hunting, and even talking to a certain type of enemy.
+
+Choose a type of favored enemy: aberrations, beasts, celestials, constructs, dragons, elementals, fey, fiends, giants, monstrosities, oozes, plants, or undead. Alternatively, you can select two races of humanoid (such as gnolls and orcs) as favored enemies.
+
+You have advantage on Wisdom (Survival) checks to track your favored enemies, as well as on Intelligence checks to recall information about them.
+
+When you gain this feature, you also learn one language of your choice that is spoken by your favored enemies, if they speak one at all.
+
+You choose one additional favored enemy, as well as an associated language, at 6th and 14th level. As you gain levels, your choices should reflect the types of monsters you have encountered on your adventures.'),
+('Natural Explorer', 'Also at 1st level, you are particularly familiar with one type of natural environment and are adept at traveling and surviving in such regions. Choose one type of favored terrain: arctic, coast, desert, forest, grassland, mountain, swamp, or the Underdark. When you make an Intelligence or Wisdom check related to your favored terrain, your proficiency bonus is doubled if you are using a skill that you’re proficient in.
+
+While traveling for an hour or more in your favored terrain, you gain the following benefits:
+
+Difficult terrain doesn’t slow your group’s travel.
+Your group can’t become lost except by magical means.
+Even when you are engaged in another activity while traveling (such as foraging, navigating, or tracking), you remain alert to danger.
+If you are traveling alone, you can move stealthily at a normal pace.
+When you forage, you find twice as much food as you normally would.
+While tracking other creatures, you also learn their exact number, their sizes, and how long ago they passed through the area.
+You choose additional favored terrain types at 6th and 10th level.'),
+('Divine Domain: Disciple of Life', 'You gain proficiency with heavy armor and your healing spells are more effective. Whenever you use a spell of 1st level or higher to restore hit points to a creature, the creature regains additional hit points equal to 2 + the spells level.'),
+('Expertise', 'At 1st level, choose two of your skill proficiencies, or one of your skill proficiencies and your proficiency with thieves tools. Your proficiency bonus is doubled for any ability check you make that uses either of the chosen proficiencies.
+
+At 6th level, you can choose two more of your proficiencies (in skills or with thieves tools) to gain this benefit.'),
+('Sneak Attack', 'Beginning at 1st level, you know how to strike subtly and exploit a foes distraction. Once per turn, you can deal an extra 1d6 damage to one creature you hit with an attack if you have advantage on the attack roll. The attack must use a finesse or a ranged weapon.
+
+You dont need advantage on the attack roll if another enemy of the target is within 5 feet of it, that enemy isnt incapacitated, and you dont have disadvantage on the attack roll.
+
+The amount of the extra damage increases as you gain levels in this class, as shown in the Sneak Attack column of the Rogue table.'),
+('Thieves Cant', 'During your rogue training you learned thieves cant, a secret mix of dialect, jargon, and code that allows you to hide messages in seemingly normal conversation. Only another creature that knows thieves cant understands such messages. It takes four times longer to convey such a message than it does to speak the same idea plainly.
+
+In addition, you understand a set of secret signs and symbols used to convey short, simple messages, such as whether an area is dangerous or the territory of a thieves guild, whether loot is nearby, or whether the people in an area are easy marks or will provide a safe house for thieves on the run.');
 
 
 
