@@ -28,7 +28,7 @@ else {
     pool = new pg.Pool({
         host: 'localhost',
         port: 5432,
-        database: 'character-creator-app',   // 	💥 Change this to the name of your database!
+        database: 'gd_dnd_projects',   // 	💥 Change this to the name of your database!
     });
 }
 

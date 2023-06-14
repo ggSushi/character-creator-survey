@@ -12,6 +12,16 @@ CREATE TABLE "user" (
   "password" VARCHAR (1000) NOT NULL
 );
 
+--Player Character Entries and Code for journal
+Create table journal (
+	"id" Serial Primary Key,
+	"type" varchar (10) default 'pc',
+	"entry" varchar(2000) NOT NULL,
+	"name" varchar(150) NOT NULL,
+	"date" varchar(10),
+	"created_at" DATE default CURRENT_DATE
+);
+
 -- Spell List Table
 CREATE TABLE "spell_list" (
 	"id" Serial Primary Key,
