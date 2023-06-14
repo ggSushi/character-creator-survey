@@ -247,5 +247,106 @@ The amount of the extra damage increases as you gain levels in this class, as sh
 
 In addition, you understand a set of secret signs and symbols used to convey short, simple messages, such as whether an area is dangerous or the territory of a thieves guild, whether loot is nearby, or whether the people in an area are easy marks or will provide a safe house for thieves on the run.');
 
+-- Spell List Table
+CREATE TABLE "spell_list" (
+	"id" Serial Primary Key,
+	"name" varchar NOT NULL,
+	"level" varchar NOt NULL,
+	"description" varchar NOT NULL
+);
 
+INSERT INTO "spell_list" ("name", "level", "description")
+VALUES
+('Silvery Barbs', 'Lv 1', 'Casting Time: 1 reaction, which you take when a creature you can see within 60 feet of yourself succeeds on an attack roll, an ability check, or a saving throw
+Range: 60 feet
+Components: V
+Duration: Instantaneous
+
+You magically distract the triggering creature and turn its momentary uncertainty into encouragement for another creature. The triggering creature must reroll the d20 and use the lower roll.
+
+You can then choose a different creature you can see within range (you can choose yourself). The chosen creature has advantage on the next attack roll, ability check, or saving throw it makes within 1 minute. A creature can be empowered by only one use of this spell at a time.'),
+('Magic Missile', 'Lv 1', 'Casting Time: 1 action
+Range: 120 feet
+Components: V, S
+Duration: Instantaneous
+
+You create three glowing darts of magical force. Each dart hits a creature of your choice that you can see within range. A dart deals 1d4 + 1 force damage to its target. The darts all strike simultaneously and you can direct them to hit one creature or several.
+
+At Higher Levels. When you cast this spell using a spell slot of 2nd level or higher, the spell creates one more dart for each slot level above 1st.'),
+('Mage Hand', 'Cantrip', 'Casting Time: 1 action
+Range: 30 feet
+Target: A point you choose within range
+Components: V S
+Duration: 1 minute
+A spectral, floating hand appears at a point you choose within range. The hand lasts for the duration or until you dismiss it as an action. The hand vanishes if it is ever more than 30 feet away from you or if you cast this spell again.
+You can use your action to control the hand. You can use the hand to manipulate an object, open an unlocked door or container, stow or retrieve an item from an open container, or pour the contents out of a vial. You can move the hand up to 30 feet each time you use it.
+The hand can’t attack, activate magic items, or carry more than 10 pounds.'),
+('Lightning Lure', 'Cantrip', 'Casting Time: 1 action
+Range: Self (15-foot radius)
+Components: V
+Duration: Instantaneous
+
+You create a lash of lightning energy that strikes at one creature of your choice that you can see within 15 feet of you. The target must succeed on a Strength saving throw or be pulled up to 10 feet in a straight line toward you and then take 1d8 lightning damage if it is within 5 feet of you.
+
+At Higher Levels, the spell damage increases by 1d8 when you reach 5th level (2d8), 11th level (3d8), and 17th level (4d8).'),
+('Fire Bolt', 'Cantrip', 'Casting Time: 1 action
+Range: 120 feet
+Components: V, S
+Duration: Instantaneous
+
+You hurl a mote of fire at a creature or object within range. Make a ranged spell attack against the target. On a hit, the target takes 1d10 fire damage. A flammable object hit by this spell ignites if it isn’t being worn or carried.
+
+At Higher Levels, This spell’s damage increases by 1d10 when you reach 5th level (2d10), 11th level (3d10), and 17th level (4d10).'),
+('Minor Illusion', 'Cantrip', 'Casting Time: 1 action
+Range: 30 feet
+Components: S, M (a bit of fleece)
+Duration: 1 minute
+
+You create a sound or an image of an object within range that lasts for the duration. The illusion also ends if you dismiss it as an action or cast this spell again.
+
+If you create a sound, its volume can range from a whisper to a scream. It can be your voice, someone else’s voice, a lion’s roar, a beating of drums, or any other sound you choose. The sound continues unabated throughout the duration, or you can make discrete sounds at different times before the spell ends.
+
+If you create an image of an object—such as a chair, muddy footprints, or a small chest—it must be no larger than a 5-foot cube. The image can’t create sound, light, smell, or any other sensory effect. Physical interaction with the image reveals it to be an illusion, because things can pass through it.
+
+If a creature uses its action to examine the sound or image, the creature can determine that it is an illusion with a successful Intelligence (Investigation) check against your spell save DC. If a creature discerns the illusion for what it is, the illusion becomes faint to the creature.'),
+('Spare the Dying', 'Cantrip', 'Casting Time: 1 action
+Range: Touch
+Components: V, S
+Duration: Instantaneous
+You touch a living creature that has 0 hit points. The creature becomes stable. This spell has no effect on undead or constructs.'),
+('Guidance', 'Cantrip', 'Casting Time: 1 action
+Range: Touch
+Components: V, S
+Duration: Concentration, up to 1 minute
+You touch one willing creature. Once before the spell ends, the target can roll a d4 and add the number rolled to one ability check of its choice. It can roll the die before or after making the ability check. The spell then ends.'),
+('Sacred Flame', 'Cantrip', 'Casting Time: 1 action
+Range: 60 feet
+Components: V, S
+Duration: Instantaneous
+Flame like radiance descends on a creature that you can see within range. The target must succeed on a Dexterity saving throw or take 1d8 radiant damage. The target gains no benefit from cover for this saving throw.
+The spells damage increases by 1d8 when you reach 5th level (2d8), 11th level (3d8), and 17th level (4d8).'),
+('Bless', 'Lv 1', 'Casting Time: 1 action
+Range: 30 feet
+Components: V, S, M (a sprinkling of holy water)
+Duration: Concentration, up to 1 minute
+You bless up to three creatures of your choice within range. Whenever a target makes an attack roll or a saving throw before the spell ends, the target can roll a d4 and add the number rolled to the attack roll or saving throw.
+At Higher Levels. When you cast this spell using a spell slot of 2nd level or higher, you can target one additional creature for each slot level above 1st.'),
+('Cure Wounds', 'Lv 1', 'Casting Time: 1 action
+Range: Touch
+Components: V, S
+Duration: Instantaneous
+A creature you touch regains a number of hit points equal to 1d8 + your spellcasting ability modifier. This spell has no effect on undead or constructs.
+At Higher Levels. When you cast this spell using a spell slot of 2nd level or higher, the healing increases by 1d8 for each slot level above 1st.'),
+('Healing Word', 'Lv 1', 'Casting Time: 1 bonus action
+Range: 60 feet
+Components: V
+Duration: Instantaneous
+A creature of your choice that you can see within range regains hit points equal to 1d4 + your spellcasting ability modifier. This spell has no effect on undead or constructs.
+At Higher Levels. When you cast this spell using a spell slot of 2nd level or higher, the healing increases by 1d4 for each slot level above 1st.'),
+('Inflict Wounds', 'Lv 1', 'Casting Time: 1 action
+Range: Touch
+Components: V, S
+Duration: Instantaneous
+Make a melee spell attack against a creature you can reach. On a hit, the target takes 3d10 necrotic damage.
+At Higher Levels. When you cast this spell using a spell slot of 2nd level or higher, the damage increases by 1d10 for each slot level above 1st.');
 
