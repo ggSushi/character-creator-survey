@@ -161,20 +161,20 @@ CREATE TABLE "classes" (
 INSERT INTO "classes" ("name", "hit_dice", "hit_point_base", "save_prof_1", "save_prof_2", "weapon_prof", "feat_id_1", "spell_save_dc", "spell_save_name", "spell_atk_mod", "cantrips_known", "cantrip_id_1", "cantrip_id_2", "cantrip_id_3", "cantrip_id_4", "spell_lv1_slots", "spellLv1_id_1", "spellLv1_id_2")
 VALUES ('Sorcerer', '1d6', 6, 'Constitution', 'Charisma', 'Daggers, darts, slings, quarterstaffs, light crossbows', 1, '8 + Prof + Cha', 'Charisma', 'Prof + Cha', 4, 3, 4, 5, 6, 2, 1, 2);
 -- Barbarian
-INSERT INTO "classes" ("name", "hit_dice", "hit_point_base", "save_prof_1", "save_prof_2", "armor_prof", "tool_prof", "weapon_prof", "equipment", "feat_id_1", "feat_id_2", "feat_id_3", "spell_save_dc", "spell_save_name", "spell_atk_mod", "cantrips_known", "cantrip_id_1", "cantrip_id_2", "cantrip_id_3", "cantrip_id_4", "cantrip_id_5", "spell_lv1_slots", "spellLv1_id_1", "spellLv1_id_2", "spellLv1_id_3", "spellLv1_id_4", "spellLv1_id_5")
-VALUES ('Sorcerer', '1d6', 6, 'Constitution', 'Charisma', 'N/A', 'N/A', 'Daggers, darts, slings, quarterstaffs, light crossbows', 'N/A', 1, 'N/A', 'N/A', '8 + Prof + Cha', 'Charisma', 'Prof + Cha', 4, 3, 4, 5, 6, 'N/A', 2, 1, 2, 'N/A', 'N/A', 'N/A');
+INSERT INTO "classes" ("name", "hit_dice", "hit_point_base", "save_prof_1", "save_prof_2", "armor_prof", "weapon_prof", "feat_id_1", "feat_id_2")
+VALUES ('Barbarian', '1d12', 12, 'Strength', 'Constitution', 'Light/medium armor, shields', 'Daggers, darts, slings, quarterstaffs, light crossbows', 2, 3);
 -- Paladin
 INSERT INTO "classes" ("name", "hit_dice", "hit_point_base", "save_prof_1", "save_prof_2", "armor_prof", "tool_prof", "weapon_prof", "equipment", "feat_id_1", "feat_id_2", "feat_id_3", "spell_save_dc", "spell_save_name", "spell_atk_mod", "cantrips_known", "cantrip_id_1", "cantrip_id_2", "cantrip_id_3", "cantrip_id_4", "cantrip_id_5", "spell_lv1_slots", "spellLv1_id_1", "spellLv1_id_2", "spellLv1_id_3", "spellLv1_id_4", "spellLv1_id_5")
-VALUES ('Sorcerer', '1d6', 6, 'Constitution', 'Charisma', 'N/A', 'N/A', 'Daggers, darts, slings, quarterstaffs, light crossbows', 'N/A', 1, 'N/A', 'N/A', '8 + Prof + Cha', 'Charisma', 'Prof + Cha', 4, 3, 4, 5, 6, 'N/A', 2, 1, 2, 'N/A', 'N/A', 'N/A');
+VALUES ('Paladin', '1d10', 10, 'Wisdom', 'Charisma', 'N/A', 'N/A', 'Daggers, darts, slings, quarterstaffs, light crossbows', 'N/A', 1, 'N/A', 'N/A', '8 + Prof + Cha', 'Charisma', 'Prof + Cha', 4, 3, 4, 5, 6, 'N/A', 2, 1, 2, 'N/A', 'N/A', 'N/A');
 -- Ranger
 INSERT INTO "classes" ("name", "hit_dice", "hit_point_base", "save_prof_1", "save_prof_2", "armor_prof", "tool_prof", "weapon_prof", "equipment", "feat_id_1", "feat_id_2", "feat_id_3", "spell_save_dc", "spell_save_name", "spell_atk_mod", "cantrips_known", "cantrip_id_1", "cantrip_id_2", "cantrip_id_3", "cantrip_id_4", "cantrip_id_5", "spell_lv1_slots", "spellLv1_id_1", "spellLv1_id_2", "spellLv1_id_3", "spellLv1_id_4", "spellLv1_id_5")
-VALUES ('Sorcerer', '1d6', 6, 'Constitution', 'Charisma', 'N/A', 'N/A', 'Daggers, darts, slings, quarterstaffs, light crossbows', 'N/A', 1, 'N/A', 'N/A', '8 + Prof + Cha', 'Charisma', 'Prof + Cha', 4, 3, 4, 5, 6, 'N/A', 2, 1, 2, 'N/A', 'N/A', 'N/A');
+VALUES ('Ranger', '1d10', 10, 'Strength', 'Dexterity', 'N/A', 'N/A', 'Daggers, darts, slings, quarterstaffs, light crossbows', 'N/A', 1, 'N/A', 'N/A', '8 + Prof + Cha', 'Charisma', 'Prof + Cha', 4, 3, 4, 5, 6, 'N/A', 2, 1, 2, 'N/A', 'N/A', 'N/A');
 -- Cleric
 INSERT INTO "classes" ("name", "hit_dice", "hit_point_base", "save_prof_1", "save_prof_2", "armor_prof", "tool_prof", "weapon_prof", "equipment", "feat_id_1", "feat_id_2", "feat_id_3", "spell_save_dc", "spell_save_name", "spell_atk_mod", "cantrips_known", "cantrip_id_1", "cantrip_id_2", "cantrip_id_3", "cantrip_id_4", "cantrip_id_5", "spell_lv1_slots", "spellLv1_id_1", "spellLv1_id_2", "spellLv1_id_3", "spellLv1_id_4", "spellLv1_id_5")
-VALUES ('Sorcerer', '1d6', 6, 'Constitution', 'Charisma', 'N/A', 'N/A', 'Daggers, darts, slings, quarterstaffs, light crossbows', 'N/A', 1, 'N/A', 'N/A', '8 + Prof + Cha', 'Charisma', 'Prof + Cha', 4, 3, 4, 5, 6, 'N/A', 2, 1, 2, 'N/A', 'N/A', 'N/A');
+VALUES ('Cleric', '1d8', 8, 'Wisdom', 'Charisma', 'N/A', 'N/A', 'Daggers, darts, slings, quarterstaffs, light crossbows', 'N/A', 1, 'N/A', 'N/A', '8 + Prof + Cha', 'Charisma', 'Prof + Cha', 4, 3, 4, 5, 6, 'N/A', 2, 1, 2, 'N/A', 'N/A', 'N/A');
 --Rogue
 INSERT INTO "classes" ("name", "hit_dice", "hit_point_base", "save_prof_1", "save_prof_2", "armor_prof", "tool_prof", "weapon_prof", "equipment", "feat_id_1", "feat_id_2", "feat_id_3", "spell_save_dc", "spell_save_name", "spell_atk_mod", "cantrips_known", "cantrip_id_1", "cantrip_id_2", "cantrip_id_3", "cantrip_id_4", "cantrip_id_5", "spell_lv1_slots", "spellLv1_id_1", "spellLv1_id_2", "spellLv1_id_3", "spellLv1_id_4", "spellLv1_id_5")
-VALUES ('Sorcerer', '1d6', 6, 'Constitution', 'Charisma', 'N/A', 'N/A', 'Daggers, darts, slings, quarterstaffs, light crossbows', 'N/A', 1, 'N/A', 'N/A', '8 + Prof + Cha', 'Charisma', 'Prof + Cha', 4, 3, 4, 5, 6, 'N/A', 2, 1, 2, 'N/A', 'N/A', 'N/A');
+VALUES ('Rogue', '1d8', 8, 'Dexterity', 'Intelligence', 'N/A', 'N/A', 'Daggers, darts, slings, quarterstaffs, light crossbows', 'N/A', 1, 'N/A', 'N/A', '8 + Prof + Cha', 'Charisma', 'Prof + Cha', 4, 3, 4, 5, 6, 'N/A', 2, 1, 2, 'N/A', 'N/A', 'N/A');
 
 
 
